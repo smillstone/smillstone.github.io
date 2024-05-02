@@ -1,7 +1,203 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<style>
+body {
+    background-image: url('https://cdn.wallpapersafari.com/14/29/opFMvH.jpg');
+}
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<h1>&nbsp;</h1>
+<h1>A508 Class Summary</h1>
+<h2>Sam Millstone</h2>
+<h3>Purpose of this web page:</h3>
+<p>This page summarizes relevant concepts and statistical techniques learned in A508 from the book Modern Statistical Methods for Astronomy. The focus is more on restating the ideas behind different techniques in a way that makes sense to me, as well as how and on what type of data one might use each technique, than just regurgitating information from the book.</p>
+<h3>Table of Contents:</h3>
+<ol>
+    <li>Introduction</li>
+    <li>Probability</li>
+    <li>Statistical Inference</li>
+    <li>Probability Distribution Functions</li>
+    <li>Nonparametric Statistics</li>
+    <li>Data Smoothing: Density Estimation</li>
+    <li>Regression</li>
+    <li>Multivariate Analysis</li>
+    <li>Clustering, classification, and data mining</li>
+</ol>
+<h2>Introduction</h2>
+<h3>1.1 The role of statistics in astronomy</h3>
+<p>The meaning and goals of statistics are debated, but it's basically a tool for interpreting data. There is a lot of human influence when using statistics and how it applies to data, so everything will be up to the scientist's interpretation, to at least some degree.</p>
+<p>Astronomers tend to believe that the underlying physical processes can be uncovered by analysis of observations. However, there are many challenges and options that one can use, and it is far too easy to reach different conclusions based on different interpretations and statistical analyses of the same data.</p>
+<h3>1.2 History of statistics in astronomy</h3>
+<p>Interesting, but not terribly relevant to the goal of this website.</p>
+<h2>Probability</h2>
+<h3>2.1 Uncertainty in observational science</h3>
+<p>It is usually impossible to measure everything about every member of a population, and those measurements that are taken are not infinitely accurate or precise. There is always some limit to our knowledge, represented by uncertainty.</p>
+<h3>2.2 Outcome spaces and events</h3>
+<p>Most of the terms defined here are in common usage and are pretty obvious, but it can be helpful to define them in a specific way.</p>
+<p><strong>Experiment</strong> - Any action whose results are not known with complete certainty before the action occurs.</p>
+<p><strong>Outcome space or sample space</strong> - The collection of all possible outcomes of the experiment.</p>
+<p><strong>Event</strong> - A subset of the sample space. <i>Not necessarily</i> a single outcome. In the sample space of all stars within 50 pc, one event could be all stars with an apparent magnitude &lt; 10, while another event tells whether a star is in a binary system.</p>
+<p>The simplest probability is when all outcomes are equally likely, so the <strong>probability of an event occurring is simply the number of favorable outcomes divided by the total number of possible outcomes.</strong></p>
+<p>For simple problems, sometimes you can just use logic to assign probabilities if the outcomes can be constructed out of outcomes from a simple experiment like the definition in bold.</p>
+<p><strong>Discrete sample space</strong> - any finite or countably infinite sample space.</p>
+<p>In general, the probability of an event occurring is equal to the sum of individual outcomes that are favorable to the event.</p>
+<h3>2.3 Axioms of probability</h3>
+<p><strong>Probability space</strong> - Described by three objects: Ω, F, and P. Ω is the sample space, F is the class of events (a collection of events from the sample space), and P is a function that assigns probabilities to each event in F.</p>
+<p><strong>Axiom 1: The probability of any event must be between 0 and 1.</strong><br><strong>Axiom 2: The sum of all probabilities must equal 1.</strong><br><strong>Axiom 3: The probability of at least one of a set of mutually exclusive events occurring is the sum of their individual probabilities. This is known as </strong><i><strong>countable additivity</strong></i><strong>.</strong></p>
+<p>The probability of the complement of an event is simply 1 minus the probability of the event.</p>
+<p>The probability of the union of two events is equal to the sum of the individual event probabilities minus the probability of the intersection. This can be extended to the <strong>inclusion-exclusion formula</strong>.</p>
+<h3>2.4 Conditional probabilities</h3>
+<p>Necessary for understanding Bayesian statistics. The probabilities of events can sometimes depend on previous knowledge about the system. Defined in words, <strong>the probability of A given B equals the probability of the intersection of A and B divided by the probability of B.</strong> An extension of this definition is the</p>
+<p><strong>Multiplication rule</strong> -&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:75%;" data-ckbox-resource-id="KRtraBGg8YDe">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/120.webp 120w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/360.webp 360w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/600.webp 600w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/840.webp 840w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/960.webp 960w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/1080.webp 1080w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/1196.webp 1196w" type="image/webp" sizes="(max-width: 1196px) 100vw, 1196px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/KRtraBGg8YDe/images/1196.png" alt="" width="1196" height="52">
+    </picture>
+</figure>
+<p>This is a very important concept for astronomy, since there is almost always at least some previous knowledge available for any given object.</p>
+<p>The multiplication rule also leads to the</p>
+<p><strong>Law of total probability</strong> -&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="jkiFa6jfDnQ6">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/129.webp 129w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/258.webp 258w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/387.webp 387w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/516.webp 516w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/645.webp 645w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/774.webp 774w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/903.webp 903w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/1032.webp 1032w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/1161.webp 1161w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/1282.webp 1282w" type="image/webp" sizes="(max-width: 1282px) 100vw, 1282px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/jkiFa6jfDnQ6/images/1282.jpeg" alt="" width="1282" height="87">
+    </picture>
+</figure>
+<p>where Bi is a partition of the sample space. All of this finally leads to</p>
+<p><strong>Theorem 2.1 (Bayes' Theorem):</strong></p>
+<figure class="image image-style-block-align-left" data-ckbox-resource-id="E4oRCTp7PmhP">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/E4oRCTp7PmhP/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/E4oRCTp7PmhP/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/E4oRCTp7PmhP/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/E4oRCTp7PmhP/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/E4oRCTp7PmhP/images/347.webp 347w" type="image/webp" sizes="(max-width: 347px) 100vw, 347px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/E4oRCTp7PmhP/images/347.png" alt="" width="347" height="98">
+    </picture>
+</figure>
+<p>where P(A) is defined by the law of total probability.</p>
+<p>If P(A|B) = P(A), then A and B are <strong>independent</strong>. In other words, the probability of independent events occurring is the <i>product of the individual probabilities.</i></p>
+<h3>2.5 Random variables</h3>
+<p><strong>Random variables</strong> are functions on the sample space. For example, the number of heads that you get when flipping a coin four times is a random variable on the sample space of all sets of four coin flips.</p>
+<p><strong>Cumulative distribution function</strong> - The probability as a function of x that the value of a random variable is less than or equal to x.</p>
+<p><strong>Probability density function</strong> - The integral of the pdf over a range of values equals the probability of the random variable having a value within that range.</p>
+<p>The idea of a random variable can be extended to a <strong>random vector</strong> of variables. Grouping variables this way allows you to study the relationships between variables instead of just each variable individually.</p>
+<p><strong>Marginal distribution</strong> - The 1-D distributions of individual variables form the random vector. They act like a regular CDF.</p>
+<p>Just like independent events, <strong>independent RVs</strong> have the joint distribution equal to the product of the marginal distributions.</p>
+<p><strong>Moments</strong> - Mathematically, the kth moment of f(x) is the integral over the sample space of f(x) to the kth power times the pdf.<br><strong>Central Moments</strong> - Moments where the RV first has the expectation subtracted out</p>
+<p><strong>Mean/First moment</strong> - also called the expected value or expectation value</p>
+<p><strong>Variance </strong>- Second moment minus first moment squared, describes the spread of a function.<br><strong>Covariance</strong> - measures the relationships between scatter in two RVs. Independent RVs have Cov = 0.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="cJwoOixwTq00">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/680.webp 680w" type="image/webp" sizes="(max-width: 680px) 100vw, 680px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/680.jpeg" width="680" height="58">
+    </picture>
+</figure>
+<p><strong>Skewness</strong> - Third central moment, describes which direction the RV leans</p>
+<p><strong>Homoscedastic</strong> - If all variables have the same variance. Opposite is <strong>heteroscedastic</strong>. For independent variables, the sample mean is the sum of all the RVs divided by the number of RVs, and the variance is the homoscedastic variance divided by the number of RVs.</p>
+<p><strong>Standard deviation</strong> - the square root of the variance</p>
+<p><strong>Standardized form</strong> of a variable - The variable minus the mean and divided by the standard deviation. This removes any units associated with the variable.</p>
+<p><strong>Independent and identically distributed</strong> - i.i.d. for short. The assumption that data are all generated from the same population or underlying distribution. For example, if you repeat the same experiment multiple times. <strong>Many methods require i.i.d. variables, so be careful.</strong></p>
+<h3>2.6 Quantile function</h3>
+<p><strong>Quantile function</strong> - The inverse of the CDF. It is the measurement of the value of the RV at which a specific fraction of the CDF has passed. For example, the 95% quantile tells what the value of the random variable is when the CDF reaches 0.95.</p>
+<h3>2.7 Discrete distributions</h3>
+<p><strong>Bernoulli distribution</strong> - An experiment that can result in only two outcomes, where the probability of one is p and the other is 1-p.</p>
+<p><strong>Binomial distribution</strong> - A Bernoulli trial is repeated n times independently. The binomial distribution describes the probability of a given number of successes. X ~ Bin(n,p). Mean = np. Variance = np(1-p)</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="Q8V7TMpYPxvD">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/152.webp 152w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/304.webp 304w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/456.webp 456w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/608.webp 608w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/760.webp 760w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/912.webp 912w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/1064.webp 1064w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/1216.webp 1216w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/1368.webp 1368w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/1514.webp 1514w" type="image/webp" sizes="(max-width: 1514px) 100vw, 1514px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q8V7TMpYPxvD/images/1514.jpeg" width="1514" height="200">
+    </picture>
+</figure>
+<p><strong>Poisson distribution</strong> - A good approximation for binomial probabilities when p<sub>n</sub> is small, n is large, and λ=np<sub>n</sub> is a reasonable value. Describes many physical phenomena where counting statistics are important (photons hitting a detector, nuclear decay, etc.). Mean = Variance = λ</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="fGRg4net1mEh">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/115.webp 115w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/230.webp 230w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/345.webp 345w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/460.webp 460w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/575.webp 575w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/690.webp 690w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/805.webp 805w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/920.webp 920w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/1035.webp 1035w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/1147.webp 1147w" type="image/webp" sizes="(max-width: 1147px) 100vw, 1147px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/fGRg4net1mEh/images/1147.jpeg" width="1147" height="189">
+    </picture>
+</figure>
+<p><strong>Negative binomial distribution</strong> - Known as the <strong>geometric distribution</strong> when r = 1. Mean = r/p, Variance = qr/p<sup>2</sup>.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="natJ8mw7U3V_">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/697.webp 697w" type="image/webp" sizes="(max-width: 697px) 100vw, 697px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/natJ8mw7U3V_/images/697.png" width="697" height="122">
+    </picture>
+</figure>
+<p>for n=r, r+1, . . . ,</p>
+<h3>2.8 Continuous distributions</h3>
+<p><strong>Uniform distribution</strong> - constant between bounds a and b. <strong>f = 1/(b-a), a &lt; x &lt; b.</strong> Mean = (a+b)/2, Variance = (1/12)(b-a)<sup>2</sup>.</p>
+<p><strong>Exponential distribution</strong> - <strong>F(x) = 1 - e<sup>-λx</sup>, f(x) = λe<sup>-λx</sup>, x ≥ 0</strong>. Mean = 1/λ, Variance = 1/λ<sup>2</sup>. This distribution displays</p>
+<p><strong>Memorylessness</strong> - The property that the probability that the RV is greater than t + s given that it is greater than s equals the probability that the RV is greater than t (for positive s, t). This property is necessary for being able to model waiting times for Poisson processes.</p>
+<p><strong>Normal/Gaussian distribution</strong> - The bell curve, the limit of the central limit theorem, describes natural processes that depend on many uncorrelated variables. RV with this pdf is a <strong>normal RV</strong>. Mean μ, Variance = σ<sup>2</sup></p>
+<figure class="image image_resized image-style-block-align-left" style="width:75%;" data-ckbox-resource-id="5leKC7KSw8NV">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/188.webp 188w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/376.webp 376w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/564.webp 564w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/752.webp 752w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/940.webp 940w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/1128.webp 1128w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/1316.webp 1316w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/1504.webp 1504w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/1692.webp 1692w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/1880.webp 1880w" type="image/webp" sizes="(max-width: 1880px) 100vw, 1880px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/5leKC7KSw8NV/images/1880.png" width="1880" height="204">
+    </picture>
+</figure>
+<p><strong>Lognormal distribution</strong> -&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="WnHbsSEqJhGK">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/136.webp 136w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/272.webp 272w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/408.webp 408w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/544.webp 544w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/680.webp 680w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/816.webp 816w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/952.webp 952w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/1088.webp 1088w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/1224.webp 1224w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/1354.webp 1354w" type="image/webp" sizes="(max-width: 1354px) 100vw, 1354px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/WnHbsSEqJhGK/images/1354.png" width="1354" height="230">
+    </picture>
+</figure>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="Jkyo9Bk7d35q">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/145.webp 145w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/290.webp 290w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/435.webp 435w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/580.webp 580w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/725.webp 725w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/870.webp 870w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/1015.webp 1015w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/1160.webp 1160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/1305.webp 1305w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/1446.webp 1446w" type="image/webp" sizes="(max-width: 1446px) 100vw, 1446px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Jkyo9Bk7d35q/images/1446.png" width="1446" height="147">
+    </picture>
+</figure>
+<h3>2.9 Distributions that are neither discrete nor continuous</h3>
+<p>It is fairly simple to construct distributions with discontinuities. When this is the case, to calculate moments, you integrate x<sup>k</sup> with the CDF as the variable of integration using the <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral">Riemann-Steiljes</a> integral.</p>
+<h3>2.10 Limit Theorems</h3>
+<p><strong>Law of large numbers</strong> - for a sequence of i.i.d. variables, the sample mean will approach the expectation value (the population mean) as n goes to infinity.</p>
+<p><strong>Central limit theorem</strong> - for a sequence of i.i.d. variables, mean μ and variance σ<sup>2</sup>, then the probability approaches normal (known as <strong>asymptotic normality</strong>).</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="oreijmQGcSN8">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/131.webp 131w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/262.webp 262w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/393.webp 393w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/524.webp 524w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/655.webp 655w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/786.webp 786w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/917.webp 917w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/1048.webp 1048w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/1179.webp 1179w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/1310.webp 1310w" type="image/webp" sizes="(max-width: 1310px) 100vw, 1310px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/oreijmQGcSN8/images/1310.png" width="1310" height="431">
+    </picture>
+</figure>
+<h3>2.11 R applications</h3>
+<p>There is a lot of good example code in this section that shows you how to graph different distributions. No use repeating it here, since there's nothing to summarize.</p>
+<h2>Statistical Inference</h2>
+<h3>3.1 The astronomical context</h3>
+<p>When trying to learn about the underlying population, it is often possible to measure the properties of only a small sample of the full population of objects (often including bias). The inferences made are often based on a</p>
+<p><strong>Statistic</strong> - a function of random variables (mean, median, mode, standard deviation, etc. though they can of course become very complicated)</p>
+<p>Inference is done basically any time a conclusion is drawn from astronomical data. Most of the rest of the book are based on different inference techniques. This chapter gives the foundations.</p>
+<h3>3.2 Concepts of statistical inference</h3>
+<p><strong>Statistical inference</strong> - the very broad category of methods to draw conclusions about underlying populations from observed samples (including intrinsic uncertainties). Can be used for estimation or to test hypotheses. Can be parametric (requiring assumptions about underlying structure of population, like linear regression), nonparametric (don't assume model structure), or semi-parametric (combine aspects of both, e.g. local regression).</p>
+<p><strong>Point estimation</strong> - The method of estimating the model parameters based on observations when the shape of the pdf of the underlying population is known (finding the mean and standard deviation of points drawn from a normal distribution, for example).</p>
+<p><strong>Maximum likelihood estimation</strong> - The <strong>likelihood</strong> is the hypothesized probability distribution that past events were drawn from. It differs from probability, since probability relates to future unknown events, while likelihood is an unknown distribution from known past events. MLE entails taking the maximum of the likelihood as the estimator for the statistic.</p>
+<p><strong>Confidence intervals</strong> - An x% confidence interval is likely to contain the estimated parameter with a probability of x%.</p>
+<p><strong>Resampling methods</strong> - point estimation methods are often inherently variable. This is necessary if one wants to determine confidence intervals, for example. Sometimes the variance is not possible to express easily, or at all. Resampling methods construct hypothetical populations from existing observations and then examine all of them simultaneously to determine intrinsic variations. Bootstrapping is one of the most common and powerful example of these techniques.</p>
+<p><strong>Testing hypotheses</strong> - instead of estimating parameters, the goal is to test if data are consistent with a hypothesis. Null hypothesis (the claim that the studied effect does not exist or that there is no relationship between datasets or variables) and alternative hypothesis. Result is either reject or not reject null hypothesis, which is <i>not the same as saying the null hypothesis is correct</i>. These types of tests can lead to <strong>false positives and false negatives</strong>, where the null hypothesis is wrongly rejected and wrongly failed to be rejected, respectively.</p>
+<p><strong>Bayesian inference</strong> - observational evidence is used to infer or update inferences. The more measurements, the belief in any given model is likely to change. Encapsulated in the <strong>prior</strong>, the distribution that represents in a function all previous knowledge about the problem.</p>
+<h3>3.3 Principles of point estimation</h3>
+<p><strong>Model misspecification</strong> - Care must be taken that the chosen model is a good fit for the chosen population or physical process.</p>
+<p><strong>Model validation</strong> - test of goodness-of-fit</p>
+<p>Multiple ways to estimate best-fit parameters, including method of moments, least squares, and MLE. The correct choice will depend on the specific problem, but there are a lot of situations where it is possible to find the best-fit that are simultaneously unbiased, have minimum variance, and have maximum likelihood.</p>
+<p>The point estimator of the true parameters is usually represented by theta hat and is a function of the random variables being explored. The estimator is calculated from a particular sample drawn from the population being estimated.</p>
+<p>However, it is not always possible to optimize all of the important properties of the estimator. Some of the important criteria of a point estimator are:</p>
+<p><strong>Unbiasedness</strong> - The bias of an estimator is the difference between the mean of an estimated parameter and its true value. <i>This is an intrinsic offest in the estimator, not the error of one representation of the estimator from a particular dataset.</i> <strong>Unbiased </strong>estimators have 0 bias, while <strong>asymptotically unbiased </strong>estimators have their bias approach zero as the number of datapoints goes to infinity.</p>
+<p><strong>Mean square error</strong> - The sum of the variance and the square of the bias. It is the expectation value of the estimator minus the true value, quantity squared. Used in the evaluation of estimated parameters.</p>
+<p><strong>Minimum variance unbiased estimator</strong> - term for the estimator with the lowest variance in a collection of unbiased estimators. It is usually considered the most desirable.</p>
+<p><strong>Consistency</strong> - The trait of an estimator that approaches the true parameter as the sample size increases.</p>
+<p><strong>Asymptotic normality</strong> - when an ensemble of consistent estimators approaches a gaussian distribution around the true value with a variance that decreases as 1/n.</p>
+<h3>3.4 Techniques of point estimation</h3>
+<p>Many probability distributions and models only depend on a few parameters. There are many techniques that one can use to obtain estimates of these parameters: The most common are method of moments, least squares, and maximum likelihood estimation. For a gaussian, for example, the mean and variance are estimated by the sample mean and sample variance, respectively.</p>
+<p><strong>Method of moments</strong> - Moments describe basic parameters of a distribution (central location, width, asymmetries).The kth sample moment is basically a discrete version of the kth moment. You sum up each sample value to the kth power and divide by the sample size. Any parameter that can be expressed as simple function of the moments can be estimated in this way.</p>
+<p><strong>Method of least squares</strong> - A significant application of least-squares is in regression (Section 7.3). The least-squares estimator of a parameter is obtained by minimizing the sum of the squares of the differences between the data and the population parameter being estimated. Weighted least squares is similar, but used for data with heteroscedastic errors. You instead minimize the weighted sum of squares, weighted by some known linear combination of parameters. This is related to <strong>Minimum χ<sup>2</sup> regression</strong>.</p>
+<p><strong>Maximum likelihood method</strong> - Focuses on methods that give the most probable outcome for an estimator. The likelihood is the pdf viewed as a function of the data given model parameters with specific values. f(_;θ) is the pdf with parameter θ. Therefore, the likelihood and loglikelihood are given by:</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="q3FCW7wevhKL">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/740.webp 740w" sizes="(max-width: 740px) 100vw, 740px" type="image/webp"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/q3FCW7wevhKL/images/740.png" width="740" height="357">
+    </picture>
+</figure>
+<p>where Xi are i.i.d. random variables, and you replace X with x for observed data. loglikelihood is usually computationally easier to calculate. The MLE estimator is usually unbiased, but if it isn't, this can usually be fixed by multiplying the estimator by a constant. For “nice” functions g of the parameter, the MLE of g is the MLE of the estimator. Many common situations have the MLE estimators as asymptotically normal (this is helpful for calculating confidence intervals).</p>
+<p><strong>Coverage probability</strong> - The probability that the true parameter is within the x% confidence interval is at least x%. For 95% confidence interval, if the experiment were repeated 100 times, an average of 95 intervals will contain the true parameter value.</p>
+<p>MLE confidence intervals depend on the variance and sample size. The 100(1-a)% confidence interval for the mean is:</p>
+<figure class="image image-style-block-align-left" data-ckbox-resource-id="Zd2nHZtsDJ7a">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/749.webp 749w" sizes="(max-width: 749px) 100vw, 749px" type="image/webp"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Zd2nHZtsDJ7a/images/749.png" width="749" height="309">
+    </picture>
+</figure>
+<p>where z and t are defined such that P(Z &gt; z) = P(T<sub>m</sub> &gt; t(m)) = a, where Z is the standard normal and T<sub>m</sub> is a t-distribution with m degrees of freedom.</p>
+<p>Other confidence interval calculations can quickly get even more complicated, but thankfully statistics software is good at calculating them.</p>
+<p><strong>Two-sided and One-sided</strong> - Two-sided confidence limits are calculated when the question permits higher and lower values. One-sided is asymmetrical.</p>
+<p>Any numerical optimization method can be used to maximize likelihoods. The simplest analytical model is to simply set the derivative of the likelihood to 0 with respect to each parameter. This gives a system of p equations in p unknowns that can be solved with algebra.</p>
+<p>There have been computational methods with varying degrees of effectiveness, but one of the most influential is the</p>
+<p><strong>EM algorithm</strong> - considers mapping set of datasets to unknown complete set. The algorithm starts with initial values of the model parameters. The algorithm is iterative and has two steps: the <strong>expectation step</strong> calculates the likelihood for the current values of the parameter, and the <strong>maximization step</strong> updates the missing data values, assuring that likelihood with respect to the current model is maximized. This new dataset replaces the original and the algorithm is repeated until convergence. This is useful since each step guarantees an increase of the likelihood from the previous iteration.</p>
+<h3>3.5 Hypothesis testing techniques</h3>
+<p>Two competing statements are determined for a given experiment. The null and alternative hypotheses. It is not possible to simultaneously minimize both false positives and false negatives, so the scientist must decide what is more important for the specific question.</p>
 </body>
 </html>
