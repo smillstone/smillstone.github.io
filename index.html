@@ -22,7 +22,10 @@ body {
     <li>Data Smoothing: Density Estimation</li>
     <li>Regression</li>
     <li>Multivariate Analysis</li>
-    <li>Clustering, classification, and data mining</li>
+    <li>Clustering, Classification, and Data Mining</li>
+    <li>Nondetections: Censored and Truncated Data</li>
+    <li>Time Series Analysis</li>
+    <li>Spatial Point Processes</li>
 </ol>
 <h2>Introduction</h2>
 <h3>1.1 The role of statistics in astronomy</h3>
@@ -729,6 +732,142 @@ body {
 <h2>Clustering, classification, and data mining</h2>
 <p>Subpopulations show up all the time in multivariate data</p>
 <h3>9.1 The astronomical context</h3>
-<p>Astronomers are always classifying things into different groups and classes based on various properties. However, most of the old classifications were subjective. There are also objective and statistical ways of doing this.</p>
+<p>Astronomers are always classifying things into different groups and classes based on various properties. However, most of the old classifications were subjective. There are also objective and statistical ways of doing this, even if the human eye is very good at it naturally.</p>
+<h3>9.2 Concepts of clustering and classification</h3>
+<p>Assume all datasets consist of n objects with p properties, with members from k subpopulations.</p>
+<p><strong>Unsupervised clustering techniques</strong> - Used when the number, location, size, and/or mophologies of the groupings are unknown. They look for groupings based on proximity using some distance measure in p-space. Results are uncertain and depend on distance measure.</p>
+<p><strong>Supervised classification</strong> - the combination of using a training set to characterize the groupings in the dataset and establishing discrimination rules on the training set and applying them to a new test set.</p>
+<p><strong>classification/decision trees</strong> - fall into subgroups based on different ranges of multiple variables. a better definition later.</p>
+<p><strong>Normal mixture model</strong> - the dataset is assumed to consist of k multivariate Gaussians. MLE or Bayesian are used to obtain the number of groups and their mean and variance.</p>
+<p><strong>Data mining</strong> - methods of classifying objects in very large datasets</p>
+<p><strong>Machine learning</strong> - allow the system to improve its own performance as more data are treated. There are many methods, including both unsupervised and supervised classification using decision trees, neural networks, support vector machines, and Bayesian networks.</p>
+<p><strong>Center</strong> - necessary for many clustering and classification algorithms. The natural choice is the centroid, but the median is more robust, so use <strong>medoids</strong>.</p>
+<p>It is important to be able to measure the success of any given procedure. The probability of misclassification can be combined with asymmetries as the <strong>cost</strong> of misclassification. A big question in science is how to balance the cost. For example, if the sample is very large, it would be more costly to waste time on erroneous measurements, but if the sample is small, it might be more costly to lose possible targets.</p>
+<p><strong>Expected cost of misclassification</strong> - exactly what it sounds like</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:640/75;" src="https://i.ibb.co/Dk8rdMP/image.png" width="640" height="75"></figure>
+<h3>9.3 Clustering</h3>
+<p><strong>Hierarchical clustering methods</strong> - find groupings without parametric assumptions or prior knowledge. It beings with each point in its own cluster. The clusters that are closest together are merged. This is repeated n-1 times until the entire dataset is within a single cluster.</p>
+<p><strong>Tree/dendrogram</strong> - The result of hierarchical clustering. It shows every step of the process and describes how and when each cluster merged.</p>
+<p>HC is very sensitive to the distance metric chosen. There are a few common choices:</p>
+<p><strong>Single linkage/friends-of-friends/nearest-neighbor clustering</strong> - the distance metric is the distance to the closest cluster member. Tends to produce unphysical elongated clusters.</p>
+<p><strong>Minimal spanning tree</strong> - subset of edges on a graph that connect all points with the minimum total weight (usu. distance)</p>
+<p><strong>Complete linkage</strong> - distance to the furthest cluster member is the metric</p>
+<p><strong>Average linkage</strong> - intermediate choice where the distance metric is the average distance to cluster members</p>
+<p><strong>Ward's minimum variance</strong> - Clusters are merged to minimize the increase the sum of intra-cluster summed squared distances.</p>
+<p><strong>k-means partitioning</strong> - start with k <strong>seed</strong> locations that represent the cluster centroids and iteratively reassign each object to the nearest cluster to reduce the sum of within-cluster squared distances. Usually converges rapidly. Choices that must be made: number of clusters k, initial seed locations (can have some impact), and must define the centroid. Choosing mean is sensitive to outliers, so sometimes use <strong>k-medoid partitioning</strong>. Careful that the summed distances, not squared distances, are minimized.</p>
+<h3>9.4 Clusters with substructure or noise</h3>
+<p>Previous methods assume all objects belong to a cluster, but, in astronomy especially, this is not always the case, such as background stars.</p>
+<p><strong>Bump hunting</strong> - start with the full dataset, progressively shrink a box with sides parallel to the axes. The box face is contracted along the face that most increases the mean density or statistic. After the peak location is located, the box may be expanded if density increases. Repeat to find other bumps.</p>
+<p><strong>DBSCAN (the best)</strong> - requires a minimum number of points within a specified <strong>reach</strong> distance. A cluster around an object with at least the minimum number of points within the reach expands naturally to include all density-reachable points. This continues until the criteria are broken. Unclassified points are considered noise.</p>
+<p>There are other similar methods such as <strong>OPTICS, BIRCH, DENCLUE, CHAMELEON, etc.</strong></p>
+<h3>9.5 Mixture models</h3>
+<p>Distinction between white noise and peaked distributions is bump hunting and distinction between one or more peaks is a test for <strong>multimodality</strong>.</p>
+<p><strong>Mixture models</strong> - Data are assumed to consist of some number of a given model form. Normal mixture models assume data are in k ellipsoidal clusters with MVN distributions.</p>
+<p>There is a probabilistic method to assigning objects to more than one cluster (<strong>soft v. hard</strong>).</p>
+<h3>9.6 Supervised classification</h3>
+<p>The most common model for supervised classification is MVN distribution.</p>
+<p><strong>Linear discriminant analysis</strong> - LDA for two classes is geometrically the same as projecting p-dim data point cloud onto a 1D line in p-space that maximally separates the classes. Separation is measured by the ratio of between-cluster variance B to the within-cluster variance W. Maximum separation occurs for</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:640/254;" src="https://i.ibb.co/qpHLHvR/image.png" width="640" height="254"></figure>
+<p>LDA is similar to PCA but has a different purpose. PCA finds linear combinations of variables that explain the most variance for the whole sample, and LDA finds linear combinations that separate classes within the sample. LDA vector a is obtained from a training set before being applied to new data.</p>
+<p><strong>Support Vector Machines</strong> - class of generalized LDAs. Dataset mapped by nonlinear functions onto a higher dimensional space so that classes in the training set can be separated using linear discrimination.</p>
+<p><strong>Classification trees</strong> - dividing a multivariate training sample into classes by progressive splitting</p>
+<p><strong>k-nearest-neighbor/memory-based</strong> <strong>classifier</strong> - related to nearest-neighbor and local regression density estimation techniques. Cluster membership is determined by the memberships of the k nearest-neighboring points in the training set. <strong>DANN</strong> is analogous to DBSCAN.</p>
+<p><strong>Automated neural networks </strong>- provide an environment where LDs are obtained in a space that has been nonlinearly mapped to from the original variables. weights learned from the training set. Basically, they use nonlinear rules to find classes.</p>
+<h3>R applications</h3>
+<p>There are many good examples in this chapter. Including unsupervised clustering using hierarchical clustering and dendrograms, DBSCAN, mixture models, and model based clustering. There is also supervised classification using LDA, k-nn, and single layer neural networks. There are examples of CART and SVM.</p>
+<h2>Nondetections: censored and truncated data</h2>
+<h3>10.1 The astronomical context</h3>
+<p>Astronomy is an unusual scientific discipline because there are a lot of upper limits on data points, and truncation by sensitivity limits is very common.</p>
+<h3>10.2 Concepts of survival analysis</h3>
+<p><strong>Censoring</strong> - object is known to exist but the object is undetected in the desired property. Can be <strong>left-censored</strong> (upper limits) or <strong>right-censored</strong> (lower limits)</p>
+<p><strong>Random left-censoring</strong> - some extraneous factor causes objects to be undetected (like poor sky conditions on a telescope)</p>
+<p><strong>Truncation</strong> - undetected objects are completely missing from the dataset.&nbsp;</p>
+<p><strong>Survival function</strong> - the probability that an object has a value above some specified level</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:522/201;" src="https://i.ibb.co/SKvqNNK/image.png" width="522" height="201"></figure>
+<p><strong>Hazard rate</strong> - the derivative of the survival function. Also, the pdf divided by the survival function.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:640/198;" src="https://i.ibb.co/YjR6Rsv/image.png" width="640" height="198"></figure>
+<p><strong>Proportional hazard model</strong> - A hazard function with an exponential decay h(x) = h<sub>0</sub>e<sup>-βx</sup>.</p>
+<p><strong>Cox regression</strong> - estimation of the β dependencies</p>
+<h3>10.3 Univariate datasets with censoring</h3>
+<p>If the distribution is known already, ML methods can be used, even with censoring and truncation. The likelihood is given by the following</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:640/108;" src="https://i.ibb.co/mSTBqgT/image.png" width="640" height="108"></figure>
+<p>Once L is established, all of the tools from chapter 3 are applicable. There are some special cases given in the book where the solutions are particularly easy.</p>
+<p>Nonparametric estimation of censored CDFs are straightforward generalizations <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">of the edf.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">When left-censored, the cumulative hazard function is&nbsp;</span></p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:505/193;" src="https://i.ibb.co/N3RBTLG/image.png" width="505" height="193"></figure>
+<p>where d is the number of objects at value xi (1 without ties).</p>
+<p><strong>Kaplan-Meier estimator</strong> - Does not change values at censored data. with left-censored data, the size of the jumps grows at lower values as the number of remaining objects becomes small</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:596/188;" src="https://i.ibb.co/mJXgFN6/image.png" width="596" height="188"></figure>
+<p>Can obtain the KM estimator by a <strong>redistribute</strong> algorithm, where the weight of each upper limit is redistributed equally among the lower detections.</p>
+<p>Can use two sample tests to ask “what is the probability that two censored datasets do not come from the same distribution.” Generally the same as classical nonparametric two-sample tests but with weights (<strong>scores</strong>) assigned to censored data.</p>
+<p><strong>Gehan test</strong> - generalized Wilcoxon test</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:562/205;" src="https://i.ibb.co/SwYFf5K/image.png" width="562" height="205"></figure>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:633/131;" src="https://i.ibb.co/TMNVNGh/image.png" width="633" height="131"></figure>
+<p>General statistic for testing the null hypothesis that the k hazard rates are the same</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:605/111;" src="https://i.ibb.co/KWphbXv/image.png" width="605" height="111"></figure>
+<p>where y is the number of objects at risk (not yet detected), d is the number of ties in the jth sample at value xi. N is total number of objects, j denotes individual samples. There are many common choices for the weights W.</p>
+<p><strong>Logrank test</strong> - W = yi, the number of objects not yet detected. Equals the sum of the failures observed minus the conditional failures expected computed at each failure time (the difference between observed and expected failures in one of the groups).</p>
+<p><strong>Gehan's test</strong> - W = yi<sup>2</sup></p>
+<p><strong>Peto-Peto test</strong> - W = yi times the KM estimator.</p>
+<p><strong>Fleming-Harrington tests</strong> - use various functions of the KM estimator as weights.</p>
+<p><i>logrank is more powerful than generalized Wilcoxon when proportional hazard applies, while generalized Wilcoxon are more effective than logrank when sample differences are greater at the uncensored side of the distribution</i>.</p>
+<h3>10.4 Multivariate datasets with censoring</h3>
+<p>First use a hypothesis test for correlation like Spearman's rho or Kendall's tau. With censoring, the generalizations of Kendall's tau are preferred</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:640/172;" src="https://i.ibb.co/PxGHqzj/image.png" width="640" height="172"></figure>
+<p>nc is the number of <strong>concordant </strong>pairs (with positive slope in x,y). nc is number of <strong>disconcordant</strong> pairs (with negative slopes). nt is the number of ties.</p>
+<p>There are many methods for linear regression with censoring.</p>
+<p><strong>Accelerated failure-time model</strong> - and example of <strong>exponential regression</strong>, a standard linear regression model after a logarithmic transformation of the dependent variable. Helps with censored variable has a wide range of values (over orders of magnitude)</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:494/94;" src="https://i.ibb.co/4J8Kgvg/image.png" width="494" height="94"></figure>
+<p><strong>Proportional hazards model/Cox regression</strong> - mentioned before, has exponential hazard rate. For two objects with different covariate values, the hazard rates are proportional to each other as the ratio of the exponential parts.</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:449/83;" src="https://i.postimg.cc/sfTZcPsG/image.png" width="449" height="83"></figure>
+<p><strong>Iterative least squares</strong> - familiar additive linear regression model is appropriate if the censored variable and covariates have similar ranges.</p>
+<p><strong>Buckley-James line estimator</strong> - variant to the MLE linear regression. permits non-gaussian residuals around the line. Trial regression is done, nonparametric KM estimator is computed and used as the distribution for the scatter. censored data points are moved downwards <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">to new locations based on KM. likelihood maximized to obtain new estimates, and the procedure is iterated.</span></p>
+<p><strong>Akritas-Thiel-Sen</strong> - works well with doubly censored data or with bad outliers</p>
+<h3>10.5 Truncation</h3>
+<p>No knowledge of how many undetected sources exist (flux limited surveys).</p>
+<p>If the underlying distribution is known, then parametric analysis can proceed based on likelihood</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:452/206;" src="https://i.postimg.cc/Bn6tRzf1/image.pnghttps://i.postimg.cc/Bn6tRzf1/image.png" width="452" height="206"></figure>
+<p>where u are the tructation limits, f is the pdf, and S is the survival.</p>
+<p><strong>Lynden-Bell-Woodroofe estimator</strong> - nonparametric MLE for randomly truncated data. Unbiased, consistent, generalized MLE of underlying distribution</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:405/124;" src="https://i.postimg.cc/CKSrFbJD/image.png" width="405" height="124"></figure>
+<h3>R applications</h3>
+<p>Here there are examples of the <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">KM estimator, applying two-sample tests with censoring, multidimensional problems with censoring, and the LBW estimator for truncation.</span></p>
+<h2><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Time series analysis</span></h2>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">11.1 The astronomical context</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Time-domain astronomy focuses on studying variable phenomena. However, much difficulty comes from the fact that a lot of astronomy nata is not evenly spaced in time and measurements often have heteroscedastic errors.</span></p>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">11.2 Concepts of time series analysis</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Procedures for evenly spaced data are well-known</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Trend</strong> - when the average value of a time series changes with time. A global linear trend has the same form as linear regression, though X is the response and t is the independent variable, for times series analysis</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Low-pass filter</strong> - smoothing to reduce variance from short-term variations</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>high-pass filter</strong> - examining residuals after fitting a regression model to reduce long-term trends</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Differencing filter</strong> - commonly used to remove various types of trends (global, periodic, stochastic, etc.) to reveal short-term structure. One example is plotting the difference between consecutive points instead of the points themselves.</span></p>
+<p><strong>State-space model</strong> - &nbsp;mathematical model with input, output and state variables related by first-order ODEs or difference equations. can be constructed to fit simultaneously long-term ternds, periodicities, and short-term autocorrelation.</p>
+<p><strong>Autocorrelation</strong> - measure of correlated structure in a time series. Basically, how well a signal correlates with a delayed version of itself.</p>
+<p><strong>Autocorrelation function</strong> - quantifies how values at different separations (in time) vary together</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:733/161;" src="https://i.postimg.cc/cJJFHvbm/image.png" width="733" height="161"></figure>
+<p>where k is the <strong>lag time</strong> and is an integer, the numerator is the sample autocovariance function, and the denominator is the sample variance. Strong ACF values for a given k imply autocorrelation on that time scale.</p>
+<p><strong>Correlogram</strong> - the plot of ACF(k) for a range of k values. Often have confidence intervals for the null hypothesis that no correlation is present.</p>
+<p><strong>White noise</strong> - random uncorrelated noise (usu. gaussian). It produces near-zero values in the ACF (ACF(0) = 1, trivially).</p>
+<p><strong>Long-term memory</strong> - What it sounds like. Time series with this property have non-zero ACF values for a wide range of k.</p>
+<p>Periodic variations in the time series produce periodic variations in the ACF - natural application to use Fourier transform.</p>
+<p><strong>Residual time series</strong> - TS after trends have been removed. This is done because ACFs are difficult to interpret when trends and stochastic variations are both present.</p>
+<p><strong>Stationarity</strong> - temporal behavior that is unchanged by an arbitrary time shift.</p>
+<p>The concept of an average is not relevant to nonstationary processes. A concept that is often applied to residuals after a model has been fitted.</p>
+<p><strong>Weakly stationary</strong> - functions with constant moments, like the mean and autocovariance but that change in other ways.</p>
+<p><strong>Nonstationarity</strong> - Opposite of stationarity, clearest examples are systems that change abruptly.</p>
+<p><strong>Change-point</strong> - The point in time when the variability characteristics abruptly change.</p>
+<p><strong>Spectral/Fourier analysis</strong> - the transformation of a signal from t<span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">he time domain to the frequency domain. Signals from periodic phenomena are much more concentrated in frequency space.</span></p>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">11.3 Time-domain analysis of evenly spaced data</span></h3>
+<p>Smoothing methods (Chapter 6) can very simply be applied to (evenly-spaced) time series data. One of the simplest methods is</p>
+<p><strong>Central moving average</strong> - calculates the moving average within a certain window, across the entire dataset.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:676/195;" src="https://i.postimg.cc/QCv2gpRh/image.png" width="676" height="195"></figure>
+<p>where the bandwidth is j time intervals. This can be modified to use median instead of mean, using only past values, weighting each value, etc.</p>
+<p><strong>Exponentially weighted moving average</strong> - used for time series with short-term autocorrelation. It is called as such because <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">the current value is&nbsp;a weighted average of all previous values with weights decreasing exponentially with time.</span></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:729/93;" src="https://i.postimg.cc/PqK0VGB6/image.png" width="729" height="93"></figure>
+<p>Variance is increased when autocorrelation is present. This can be thought of as a decrease in the number of independent measurements because the process is periodic.</p>
+<p><strong>Partial autocorrelation function</strong> - Gives autocorrelation while removing the effects of correlations at shorter lags. The value of PACF(p) is found by successively fitting autoregressive models with order 1,2,…,p and setting the last coefficient of each model to the PACF parameter. For example, AR(2) has&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:694/137;" src="https://i.postimg.cc/tCywb4pr/image.png" width="694" height="137"></figure>
+<p><strong>Lag k scatter plot</strong> - plot all x(t) against x(t+k). Random scatter implies uncorrelated noise and linear relationship points toward stochastic AR behavior. Circular distribution suggests a periodic signal, and clusters of points suggest nonstationary time series with classes of variable behavior.</p>
+<p><strong>Durbin-Watson statistic</strong>⁠⁠⁠⁠⁠⁠⁠ - a simple measure of autocorrelation in evenly spaced time series.</p>
 </body>
 </html>
