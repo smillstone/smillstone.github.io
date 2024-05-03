@@ -348,7 +348,7 @@ body {
 <p><strong>Gamma distribution</strong> - A generalization of the Pareto distribution: power law at low x and exponential at high x. It is linked with the Poisson distribution: its CDF gives the probability of observing <i>a</i> or more events. It also results from t<span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">he sum of i.i.d. exponential random variables.</span></p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="XJeyR9AVGKfl">
     <picture>
-        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/555.webp 555w" sizes="(max-width: 555px) 100vw, 555px" type="image/webp"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/555.png" width="555" height="94">
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/555.webp 555w" type="image/webp" sizes="(max-width: 555px) 100vw, 555px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/XJeyR9AVGKfl/images/555.png" width="555" height="94">
     </picture>
 </figure>
 <p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>χ<sup>2</sup><sub>v</sub> distribution</strong> - special case of the gamma distribution where b = 2 and α = ν/2.</span></p>
@@ -364,5 +364,189 @@ body {
 <p><strong>Robust</strong> - insensitive to slight deviations from model assumptions (until the <strong>breakdown point</strong>).</p>
 <p>Some procedures are parametric but operate on ranks instead of values.</p>
 <h3>5.3 Univariate problems</h3>
+<p><strong>Empirical distribution function</strong> - simplest and most direct (unbiased and consistent) nonparametric estimator of CDF. Made up of steps with heights of 1/n located at the values of Xi.</p>
+<p><strong>KS test</strong> - measures the maximum distance between the edf and the model. Used to test the null hypothesis that the edf equals the cdf of the proposed distribution. A large value allows rejection of the null hypothesis that the two distributions are equal. here is the cumulative distribution for the one-sample KS statistic. Mcrit is the critical value.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="mzFnljznWYEY">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/725.webp 725w" type="image/webp" sizes="(max-width: 725px) 100vw, 725px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/725.png" width="725" height="377">
+    </picture>
+</figure>
+<p><i>The KS test has serious limitations:</i></p>
+<ol>
+    <li>KS is not distribution-free: pre-tabulated critical values of KS statistic are not valid if the model parameters were estimated from the data set being tested, only if the model parameters are known in advance.</li>
+    <li>Also not distribution-free if the dataset has two or more dimensions because a unique ordering of points is necessary to construct an edf.</li>
+    <li>KS is sensitive to differences between two edfs or one edf and the cdf having different means.</li>
+    <li>Less efficient efficient near tails of distribution</li>
+</ol>
+<p><strong>CvM statistic</strong> - measures the sum of the squared differences between the edf and cdf. Captures global and local differences, so often performs better than KS. Similar limitation to KS, again, in that the edf and cdf converge to 0 and 1 at the ends, so differences there are squeezed.</p>
+<p>Two-sample tests compare two edfs versus an edf and cdf.</p>
+<p><strong>AD statistic</strong> - provides consistent sensitivity across the full range of x. It is a weighted variant of the CvM statistic. <i>Usually the best choice of these 3.</i></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="aWZ2EuWlyGXC">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/728.webp 728w" type="image/webp" sizes="(max-width: 728px) 100vw, 728px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/aWZ2EuWlyGXC/images/728.png" width="728" height="170">
+    </picture>
+</figure>
+<p><strong>Median</strong> - central value, very robust. mean is not robust. These two are limiting cases of</p>
+<p><strong>trimmed means</strong> -&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="PKpLehSiDYKe">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/696.webp 696w" type="image/webp" sizes="(max-width: 696px) 100vw, 696px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/PKpLehSiDYKe/images/696.png" width="696" height="210">
+    </picture>
+</figure>
+<p>where m = 0 gives untrimmed mean, and 0 &lt; m &lt; 0.5n trim a range of values from both ends of the distribution. A similar estimate of central location is the</p>
+<p><strong>trimean</strong> - weighted mean of the 25%, 50%, and 75% quantiles.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="aTVAKyuEExrM">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/731.webp 731w" type="image/webp" sizes="(max-width: 731px) 100vw, 731px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/aTVAKyuEExrM/images/731.png" width="731" height="133">
+    </picture>
+</figure>
+<p><strong>Interquartile range</strong> - the distance between the 25% and 75% quantiles.</p>
+<p>The book suggests, when measuring dispersion, to instead use the</p>
+<p><strong>Median absolute deviation</strong> = Med|Xi - Med|. Very stable estimator of dispersion, but not very efficient or precise. The <strong>normalized MAD</strong> scales the MAD to the standard deviation of a normal distribution.</p>
+<p><strong>M-estimators</strong> - robust statistics. For example, M-estimates of location are weighted means where outliers are downweighted.</p>
+<h3>5.4 Hypothesis testing</h3>
+<p>There are nonparametric hypothesis tests to test the central location of a distribution</p>
+<p><strong>Sign test</strong> - simple test that compares the number of points above the assumed value for the median with the number of points below the assumed value. If it is the true median, then the statistic is 0.</p>
+<p>There are many nonparametric methods for comparing two or more univariate datasets that test the null hypothesis that the two underlying populations are identical.</p>
+<p><strong>MWW/Wilcoxon sum of rank test</strong> - collect all datapoints from the two sets and put them in ascending order. Then replace each point by 1, 2, 3, … in sequence (the ranks), awarding average ranks to ties.</p>
+<figure class="image image-style-block-align-left" data-ckbox-resource-id="oFJTQt8QgldQ">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/436.webp 436w" type="image/webp" sizes="(max-width: 436px) 100vw, 436px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/oFJTQt8QgldQ/images/436.png" width="436" height="162">
+    </picture>
+</figure>
+<p>is the test statistic, where R represents the rank, and the 1 represents the first sample. For m,n &gt; 7, the statistic is asymptotically normal, so the z statistic can be compared with this to see if it is significant.</p>
+<p>MWW acts as a nonparametric substitute for the t test.</p>
+<p>There are related tests that we didn't talk about in class in the book.</p>
+<h3>5.5 Contingency tables</h3>
+<p><strong>Contingency tables</strong> - table that presents data categorically rather than numerically. Can use <strong>χ<sup>2</sup></strong> test if looking for the independence between attributes.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="QKJolt6uy05m">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/700.webp 700w" type="image/webp" sizes="(max-width: 700px) 100vw, 700px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/QKJolt6uy05m/images/700.png" width="700" height="211">
+    </picture>
+</figure>
+<p>for a generalized r by c contingency table, where O is the observed number and E is the expected. The null distribution is the χ<sup>2</sup> distribution with (r-1)(c-1) degrees of freedom.</p>
+<p><strong>Fisher's Exact Test</strong> - Determines probability of getting the observed results if hypothesis that the two parameters in the 2 by 2 contingency table are unrelated. Turns into a hypergeometric distribution (sampling finite population without replacement)</p>
+<h3>5.6 Bivariate and multivariate tests</h3>
+<p><strong>Spearman's rank test</strong> - for the independence between two variables. Subtract to find the difference between the rank values for each pair of observations. Square each difference and add them all up. Ties require a correction.</p>
+<p><strong>Kendall tau correlation measure</strong> - usually nearly identical to Spearman, but is sometimes preferable as it approaches normality factor for small samples. The ratio of the difference of concordant and discordant pairs to the sum of concordant and discordant pairs.</p>
+<h3>5.7 Remarks</h3>
+<p>Nonparametrics should be used more often because the underlying physics are never perfectly understood.</p>
+<h3>R applications</h3>
+<p>The examples create summary plots and statistics and simple visualizations of a univariate dataset. They show a boxplot and display different test for normality. They create empirical distributions, show the quantile functions as well as Q-Q plots. There are also examples of two-sample tests and an example of contingency tables.</p>
+<h2>Data smoothing</h2>
+<h3>6.1 astronomical context</h3>
+<p><strong>Density estimation</strong> - estimate unknown pdf of RV from a set of observations, or <i>turn individual measurements into a continuous distribution</i>.</p>
+<h3>6.2 Concepts of density estimation</h3>
+<p><strong>Nonparametric density estimation</strong> - when there is no assumption of parametric form</p>
+<h3>6.3 Histograms</h3>
+<p>Histograms are nearly ubiquitous in astronomy, but they have a lot of downsides.</p>
+<p><strong>Histogram estimator</strong> - The number of points in the m-th bin containing x, where h is the bin width for the bin that x is in.</p>
+<figure class="image image-style-block-align-left" data-ckbox-resource-id="eQ2Oid-7ar3R">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/456.webp 456w" type="image/webp" sizes="(max-width: 456px) 100vw, 456px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/eQ2Oid-7ar3R/images/456.png" width="456" height="200">
+    </picture>
+</figure>
+<p>The choice of bin width is the most important decision when creating a histogram. There are many different choices for binwidth.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="kAfWYvu5fEHS">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/711.webp 711w" type="image/webp" sizes="(max-width: 711px) 100vw, 711px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/711.png" width="711" height="180">
+    </picture>
+</figure>
+<p>is used when the population resembles a normal distribution, where ⅓ is replaced by 1/(2 + p) for multivariate datasets with p dimensions. The MSE has a bias that shrinks with shrinking h, and a variance that decreases for increasing h. Other choices of bin width work to balance the tension between the two.</p>
+<p>Histograms have <i>several problems</i>:</p>
+<ol>
+    <li>No guidance for choosing the origin for the histogram. Can be mitigated with <strong>average shifted histograms</strong></li>
+    <li>No guidance for choosing the method for grouping data into bins: equal spacing but unequal points, unequal spacing but equal number of points, or something else.</li>
+    <li>If being used for further analysis, a central bin location must be specified, but this causes a bias.</li>
+    <li>The choice of optimal bin width requires knowing the true distribution, finding which is the point of the histogram in the first place</li>
+    <li>Multivariate histograms are difficult to visualize or interpret</li>
+    <li>Discontinuities between bins don't accurately reflect continuous behavior</li>
+</ol>
+<p>Even though there are all these drawbacks, <i>histograms are appropriate when the original data is binned</i></p>
+<h3>6.4 Kernel density estimators</h3>
+<p>Convolve discrete data with a kernel to create a smooth density. However, there are many possible choices for the functional form and smoothing parameter/bandwidth for the kernel.</p>
+<p>A constant bandwidth <strong>kernel estimator</strong> for i.i.d. random variables has the form</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="4WZMrss6ruUv">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/703.webp 703w" type="image/webp" sizes="(max-width: 703px) 100vw, 703px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/4WZMrss6ruUv/images/703.png" width="703" height="157">
+    </picture>
+</figure>
+<p>where K is the normalized kernel function.</p>
+<p><strong>Mean integrated square error</strong> - criterion for applicability of a KDE to an underlying pdf.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="wttwwhFdykrf">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/653.webp 653w" type="image/webp" sizes="(max-width: 653px) 100vw, 653px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/wttwwhFdykrf/images/653.png" width="653" height="96">
+    </picture>
+</figure>
+<p>where E is the mean. It is also the sum of bias and variance terms, so the optimal bandwidth is chosen to minimize the MISE.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="WKCUritBMPti">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/527.webp 527w" type="image/webp" sizes="(max-width: 527px) 100vw, 527px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/WKCUritBMPti/images/527.png" width="527" height="204">
+    </picture>
+</figure>
+<p>the Gaussian density with mean 0 and variance 1 is a very common choice of kernel, though it is not optimal for minimizing MISE. Other choices include the</p>
+<p><strong>Epanechikov kernel</strong> - an inverted parabola kernel over -1 to 1</p>
+<p>and an inverted triangle. The boxcar kernel is a rectangle, though it has weaker performance.</p>
+<p>Finding the correct bandwidth is very important to minimizing the MISE, and there are many difference possible choices.</p>
+<figure class="image image-style-block-align-left" data-ckbox-resource-id="zvXuuNZfvL_s">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/426.webp 426w" type="image/webp" sizes="(max-width: 426px) 100vw, 426px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/zvXuuNZfvL_s/images/426.png" width="426" height="117">
+    </picture>
+</figure>
+<p>where A is the minimum of the standard deviation and interquartile range is a rule of thumb bandwidth, though it doesn't work for multimodal distributions.</p>
+<p>It is, in general, very difficult to minimize the MISE by direct calculation. A way around this is with</p>
+<p><strong>Cross-validation</strong> - jackknife the dataset and calculate the KDE for each one. The average loglikelihood over these datasets is&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="eDaaxxJU1YiE">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/643.webp 643w" type="image/webp" sizes="(max-width: 643px) 100vw, 643px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/eDaaxxJU1YiE/images/643.png" width="643" height="175">
+    </picture>
+</figure>
+<p>and the optimal bandwidth maximizes CV. There is a least-squares version that is resistant to outliers.</p>
+<p>In multiple dimensions, the estimator can be a single multivariate density function or the product of univariate kernels.</p>
+<h3>6.5 Adaptive smoothing</h3>
+<p>There are oftentimes datasets with multiple peaks or detailed structure over a range of scales. In this case, the previous KDEs lose underlying information.</p>
+<p>There are multiple different approaches one can use. For example, a particularly simple one is&nbsp;</p>
+<figure class="image image-style-block-align-left" data-ckbox-resource-id="Q4TUtHqZQXxH">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/508.webp 508w" type="image/webp" sizes="(max-width: 508px) 100vw, 508px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/Q4TUtHqZQXxH/images/508.png" width="508" height="193">
+    </picture>
+</figure>
+<p>where h is the global optimal bandwidth and f is an approximation of the pdf.</p>
+<p>A more complicated but widely applicable approach starts with a first estimate of the density f~ using a standard kernel and the optimal constant bandwidth. Then, λ, the local bandwidth factor is obtained at each x point</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="buxP9OMHie5u">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/656.webp 656w" type="image/webp" sizes="(max-width: 656px) 100vw, 656px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/buxP9OMHie5u/images/656.png" width="656" height="276">
+    </picture>
+</figure>
+<p>where g is the geometric mean of the first estimator and α is a sensitivity parameter between 0 and 1 (how sensitive the final kernel is to local variations). Then, finally, the adaptive estimator at x is given by&nbsp;</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="eK1qQm-GhbRM">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/715.webp 715w" type="image/webp" sizes="(max-width: 715px) 100vw, 715px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/eK1qQm-GhbRM/images/715.png" width="715" height="136">
+    </picture>
+</figure>
+<p><strong>k-th nearest neighbor</strong> - Exactly what it sounds like. The density estimator based on it is given by</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="tbUH2OJ5yBYI">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/683.webp 683w" type="image/webp" sizes="(max-width: 683px) 100vw, 683px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/tbUH2OJ5yBYI/images/683.png" width="683" height="202">
+    </picture>
+</figure>
+<p>where p is the dimensionality. It is useful in datamining, but it has disadvantages: it is not a pdf (not normalized), it is discontinuous, prone to local noise, no general best choice of k.</p>
+<h3>6.6 Nonparametric regression</h3>
+<p>Many datasets are multivariate tables of properties. Many scientific questions are about quantifying <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">the dependence of a <strong>response variable</strong> (dependent variable) y on one or more <strong>independent variables</strong> x. Here we look at methods that do not guess the true parametric functional relationship. It should be used when the physical processes linking y and x are not known. These are not common in astronomy, </span><i><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">but should be moreso.</span></i></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>NW estimator</strong> - For i.i.d. bivariate data, the estimated regression function given by</span></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="OUP011MHo_R9">
+    <picture>
+        <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/688.webp 688w" type="image/webp" sizes="(max-width: 688px) 100vw, 688px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/OUP011MHo_R9/images/688.png" width="688" height="285">
+    </picture>
+</figure>
+<p>It is a weighted local average of the dependent variable. Also the least-squares regression fit of y as a function of x when the y values are averaged over a window of width 2h<sub>x</sub> centered at Xi. This concept has been generalized to fit higher order polynomials in these windows to more accurately model gradients and can be generalized to multivariate problems, such as with the <strong>LOWESS method </strong>that involves calculating kernels for local polynomial regression.</p>
+<p><strong>Range</strong> - equivalent to local bandwidth</p>
+<p><strong>Spline smoothing</strong> - A chosen function (usually a cubic) is fitted <i>locally</i> to data with a roughness penalty to constrain the smoothness. The curve is evaluated at <strong>knots</strong> (usually between points) rather than data points themselves. Smoothing splines have small bias, but don't necessarily minimize MISE.</p>
+<p>There are multivariate extensions to this type of regression, including</p>
+<p><strong>Kriging</strong> - Least-squares interpolation method for irregularly spaced data points (more on this later).</p>
+<h3>R applications</h3>
+<p>Here they give examples of histograms, quantile functions, and representing measurement errors. There are some examples of different kernel smoothers (both constant and adaptive) as well as how measurement errors impact these. They also show some examples of nonparametric regression like spline fits, NW estimators, local regression, and LOESS.</p>
+<h2>Regression</h2>
+<p>&nbsp;</p>
 </body>
 </html>
