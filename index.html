@@ -11,7 +11,7 @@ body {
 <h1>A508 Class Summary</h1>
 <h2>Sam Millstone</h2>
 <h3>Purpose of this web page:</h3>
-<p>This page summarizes relevant concepts and statistical techniques learned in A508 from the book Modern Statistical Methods for Astronomy. The focus is more on restating the ideas behind different techniques in a way that makes sense to me (specifically those that were mentioned more than just in passing), than just regurgitating information from the book.</p>
+<p>This page summarizes relevant concepts and statistical techniques learned in A508 from the book Modern Statistical Methods for Astronomy. The focus is more on restating the ideas behind different techniques in a way that makes sense to me (specifically those that were mentioned more than just in passing during class), than just regurgitating information from the book.</p>
 <h3>Table of Contents:</h3>
 <ol>
     <li>Introduction</li>
@@ -41,8 +41,8 @@ body {
 <p><strong>Experiment</strong> - Any action whose results are not known with complete certainty before the action occurs.</p>
 <p><strong>Outcome space or sample space</strong> - The collection of all possible outcomes of the experiment.</p>
 <p><strong>Event</strong> - A subset of the sample space. <i>Not necessarily</i> a single outcome. In the sample space of all stars within 50 pc, one event could be all stars with an apparent magnitude &lt; 10, while another event tells whether a star is in a binary system.</p>
-<p>The simplest probability is when all outcomes are equally likely, so the <strong>probability of an event occurring is simply the number of favorable outcomes divided by the total number of possible outcomes.</strong></p>
-<p>For simple problems, sometimes you can just use logic to assign probabilities if the outcomes can be constructed out of outcomes from a simple experiment like the definition in bold.</p>
+<p>The simplest probability is when all outcomes are equally likely, so the<i><strong> </strong>probability of an event occurring is simply the number of favorable outcomes divided by the total number of possible outcomes.</i></p>
+<p>For simple problems, sometimes you can just use logic to assign probabilities if the outcomes can be constructed out of outcomes from a simple experiment like the definition italicized above.</p>
 <p><strong>Discrete sample space</strong> - any finite or countably infinite sample space.</p>
 <p>In general, the probability of an event occurring is equal to the sum of individual outcomes that are favorable to the event.</p>
 <h3>2.3 Axioms of probability</h3>
@@ -68,12 +68,12 @@ body {
 <p>where P(A) is defined by the law of total probability.</p>
 <p>If P(A|B) = P(A), then A and B are <strong>independent</strong>. In other words, the probability of independent events occurring is the <i>product of the individual probabilities.</i></p>
 <h3>2.5 Random variables</h3>
-<p><strong>Random variables</strong> are functions on the sample space. For example, the number of heads that you get when flipping a coin four times is a random variable on the sample space of all sets of four coin flips.</p>
+<p><strong>Random variables</strong> - functions on the sample space. For example, the number of heads that you get when flipping a coin four times is a random variable on the sample space of all sets of four coin flips.</p>
 <p><strong>Cumulative distribution function</strong> - The probability as a function of x that the value of a random variable is less than or equal to x.</p>
 <p><strong>Probability density function</strong> - The integral of the pdf over a range of values equals the probability of the random variable having a value within that range.</p>
 <p>The idea of a random variable can be extended to a <strong>random vector</strong> of variables. Grouping variables this way allows you to study the relationships between variables instead of just each variable individually.</p>
-<p><strong>Marginal distribution</strong> - The 1-D distributions of individual variables form the random vector. They act like a regular CDF.</p>
-<p>Just like independent events, <strong>independent RVs</strong> have the joint distribution equal to the product of the marginal distributions.</p>
+<p><strong>Marginal distribution</strong> - The 1-D distributions of individual variables from the random vector. They act like a regular CDF.</p>
+<p>Just like independent events, <strong>independent RVs</strong> have their joint distribution equal to the product of the marginal distributions.</p>
 <p><strong>Moments</strong> - Mathematically, the kth moment of f(x) is the integral over the sample space of f(x) to the kth power times the pdf.<br><strong>Central Moments</strong> - Moments where the RV first has the expectation subtracted out</p>
 <p><strong>Mean/First moment</strong> - also called the expected value or expectation value</p>
 <p><strong>Variance </strong>- Second moment minus first moment squared, describes the spread of a function.<br><strong>Covariance</strong> - measures the relationships between scatter in two RVs. Independent RVs have Cov = 0.</p>
@@ -82,8 +82,8 @@ body {
         <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/680.webp 680w" type="image/webp" sizes="(max-width: 680px) 100vw, 680px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/cJwoOixwTq00/images/680.jpeg" width="680" height="58">
     </picture>
 </figure>
-<p><strong>Skewness</strong> - Third central moment, describes which direction the RV leans</p>
-<p><strong>Homoscedastic</strong> - If all variables have the same variance. Opposite is <strong>heteroscedastic</strong>. For independent variables, the sample mean is the sum of all the RVs divided by the number of RVs, and the variance is the homoscedastic variance divided by the number of RVs.</p>
+<p><strong>Skewness</strong> - Third central moment. Describes which direction the RV leans</p>
+<p><strong>Homoscedastic</strong> - If all variables have the same variance. The opposite is <strong>heteroscedastic</strong>. For independent variables, the sample mean is the sum of all the RVs divided by the number of RVs, and the variance is the homoscedastic variance divided by the number of RVs.</p>
 <p><strong>Standard deviation</strong> - the square root of the variance</p>
 <p><strong>Standardized form</strong> of a variable - The variable minus the mean and divided by the standard deviation. This removes any units associated with the variable.</p>
 <p><strong>Independent and identically distributed</strong> - i.i.d. for short. The assumption that data are all generated from the same population or underlying distribution. For example, if you repeat the same experiment multiple times. <strong>Many methods require i.i.d. variables, so be careful.</strong></p>
@@ -118,35 +118,35 @@ body {
 <p><strong>Central limit theorem</strong> - for a sequence of i.i.d. variables, mean μ and variance σ<sup>2</sup>, then the probability approaches normal (known as <strong>asymptotic normality</strong>).</p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:512/187;" src="https://i.ibb.co/zPYDw6j/image.png" width="512" height="187"></figure>
 <h3>2.11 R applications</h3>
-<p>There is a lot of good example code in this section that shows you how to graph different distributions. No use repeating it here, since there's nothing to summarize.</p>
+<p>There is a lot of good example code in this section that shows you how to graph different distributions. No use repeating it here, since there's nothing to summarize. Just open the book if a specific example is needed.</p>
 <h2>Statistical Inference</h2>
 <h3>3.1 The astronomical context</h3>
 <p>When trying to learn about the underlying population, it is often possible to measure the properties of only a small sample of the full population of objects (often including bias). The inferences made are often based on a</p>
-<p><strong>Statistic</strong> - a function of random variables (mean, median, mode, standard deviation, etc. though they can of course become very complicated)</p>
-<p>Inference is done basically any time a conclusion is drawn from astronomical data. Most of the rest of the book are based on different inference techniques. This chapter gives the foundations.</p>
+<p><strong>Statistic</strong> - a function of random variables (mean, median, mode, standard deviation, etc. though they can, of course, become very complicated)</p>
+<p>Inference is done basically any time a conclusion is drawn from astronomical data. Most of the rest of the book is based on different inference techniques. This chapter gives the foundations.</p>
 <h3>3.2 Concepts of statistical inference</h3>
-<p><strong>Statistical inference</strong> - the very broad category of methods to draw conclusions about underlying populations from observed samples (including intrinsic uncertainties). Can be used for estimation or to test hypotheses. Can be parametric (requiring assumptions about underlying structure of population, like linear regression), nonparametric (don't assume model structure), or semi-parametric (combine aspects of both, e.g. local regression).</p>
+<p><strong>Statistical inference</strong> - the very broad category of methods to draw conclusions about underlying populations from observed samples (including intrinsic uncertainties). It can be used for estimation or to test hypotheses. It can be parametric (requiring assumptions about the underlying structure of the population, like linear regression), nonparametric (don't assume model structure), or semi-parametric (combine aspects of both, e.g., local regression).</p>
 <p><strong>Point estimation</strong> - The method of estimating the model parameters based on observations when the shape of the pdf of the underlying population is known (finding the mean and standard deviation of points drawn from a normal distribution, for example).</p>
 <p><strong>Maximum likelihood estimation</strong> - The <strong>likelihood</strong> is the hypothesized probability distribution that past events were drawn from. It differs from probability, since probability relates to future unknown events, while likelihood is an unknown distribution from known past events. MLE entails taking the maximum of the likelihood as the estimator for the statistic.</p>
 <p><strong>Confidence intervals</strong> - An x% confidence interval is likely to contain the estimated parameter with a probability of x%.</p>
-<p><strong>Resampling methods</strong> - point estimation methods are often inherently variable. This is necessary if one wants to determine confidence intervals, for example. Sometimes the variance is not possible to express easily, or at all. Resampling methods construct hypothetical populations from existing observations and then examine all of them simultaneously to determine intrinsic variations. Bootstrapping is one of the most common and powerful example of these techniques.</p>
-<p><strong>Testing hypotheses</strong> - instead of estimating parameters, the goal is to test if data are consistent with a hypothesis. Null hypothesis (the claim that the studied effect does not exist or that there is no relationship between datasets or variables) and alternative hypothesis. Result is either reject or not reject null hypothesis, which is <i>not the same as saying the null hypothesis is correct</i>. These types of tests can lead to <strong>false positives and false negatives</strong>, where the null hypothesis is wrongly rejected and wrongly failed to be rejected, respectively.</p>
-<p><strong>Bayesian inference</strong> - observational evidence is used to infer or update inferences. The more measurements, the belief in any given model is likely to change. Encapsulated in the <strong>prior</strong>, the distribution that represents in a function all previous knowledge about the problem.</p>
+<p><strong>Resampling methods</strong> - point estimation methods are often inherently variable. This is necessary if one wants to determine confidence intervals, for example. Sometimes the variance is not possible to express easily, or at all. Resampling methods construct hypothetical populations from existing observations and then examine all of them simultaneously to determine intrinsic variations. Bootstrapping is one of the most common and powerful examples of these techniques.</p>
+<p><strong>Testing hypotheses</strong> - instead of estimating parameters, the goal is to test if data are consistent with a hypothesis. Null hypothesis (the claim that the studied effect does not exist or that there is no relationship between datasets or variables) and alternative hypothesis. The result is either reject or not reject the null hypothesis, <i>which is not the same as saying the null hypothesis is correct</i>. These types of tests can lead to <strong>false positives and false negatives</strong>, where the null hypothesis is wrongly rejected and wrongly failed to be rejected, respectively.</p>
+<p><strong>Bayesian inference</strong> - observational evidence is used to infer or update inferences. As more measurements are taken, the belief in any given model is likely to change. Encapsulated in the <strong>prior</strong>, the distribution that represents, in functional form, all previous knowledge about the problem.</p>
 <h3>3.3 Principles of point estimation</h3>
 <p><strong>Model misspecification</strong> - Care must be taken that the chosen model is a good fit for the chosen population or physical process.</p>
 <p><strong>Model validation</strong> - test of goodness-of-fit</p>
-<p>Multiple ways to estimate best-fit parameters, including method of moments, least squares, and MLE. The correct choice will depend on the specific problem, but there are a lot of situations where it is possible to find the best-fit that are simultaneously unbiased, have minimum variance, and have maximum likelihood.</p>
+<p>Multiple ways to estimate best-fit parameters, including method of moments, least squares, and MLE. The correct choice will depend on the specific problem, but there are a lot of situations where it is possible to find the best-fit using techniques that are simultaneously unbiased, have minimum variance, and have maximum likelihood.</p>
 <p>The point estimator of the true parameters is usually represented by theta hat and is a function of the random variables being explored. The estimator is calculated from a particular sample drawn from the population being estimated.</p>
-<p>However, it is not always possible to optimize all of the important properties of the estimator. Some of the important criteria of a point estimator are:</p>
-<p><strong>Unbiasedness</strong> - The bias of an estimator is the difference between the mean of an estimated parameter and its true value. <i>This is an intrinsic offest in the estimator, not the error of one representation of the estimator from a particular dataset.</i> <strong>Unbiased </strong>estimators have 0 bias, while <strong>asymptotically unbiased </strong>estimators have their bias approach zero as the number of datapoints goes to infinity.</p>
+<p>However, it is not always possible to optimize all the important properties of the estimator. Some of the important criteria of a point estimator are:</p>
+<p><strong>Unbiasedness</strong> - The bias of an estimator is the difference between the mean of an estimated parameter and its true value. <i>This is an intrinsic offset in the estimator, not the error of one representation of the estimator from a particular dataset.</i> <strong>Unbiased </strong>estimators have 0 bias, while <strong>asymptotically unbiased </strong>estimators have their bias approach zero as the number of data points goes to infinity.</p>
 <p><strong>Mean square error</strong> - The sum of the variance and the square of the bias. It is the expectation value of the estimator minus the true value, quantity squared. Used in the evaluation of estimated parameters.</p>
-<p><strong>Minimum variance unbiased estimator</strong> - term for the estimator with the lowest variance in a collection of unbiased estimators. It is usually considered the most desirable.</p>
+<p><strong>Minimum variance unbiased estimator</strong> - a term for the estimator with the lowest variance in a collection of unbiased estimators. It is usually considered the most desirable.</p>
 <p><strong>Consistency</strong> - The trait of an estimator that approaches the true parameter as the sample size increases.</p>
-<p><strong>Asymptotic normality</strong> - when an ensemble of consistent estimators approaches a gaussian distribution around the true value with a variance that decreases as 1/n.</p>
+<p><strong>Asymptotic normality</strong> - when an ensemble of consistent estimators approaches a Gaussian distribution around the true value with a variance that decreases as 1/n.</p>
 <h3>3.4 Techniques of point estimation</h3>
-<p>Many probability distributions and models only depend on a few parameters. There are many techniques that one can use to obtain estimates of these parameters: The most common are method of moments, least squares, and maximum likelihood estimation. For a gaussian, for example, the mean and variance are estimated by the sample mean and sample variance, respectively.</p>
-<p><strong>Method of moments</strong> - Moments describe basic parameters of a distribution (central location, width, asymmetries).The kth sample moment is basically a discrete version of the kth moment. You sum up each sample value to the kth power and divide by the sample size. Any parameter that can be expressed as simple function of the moments can be estimated in this way.</p>
-<p><strong>Method of least squares</strong> - A significant application of least-squares is in regression (Section 7.3). The least-squares estimator of a parameter is obtained by minimizing the sum of the squares of the differences between the data and the population parameter being estimated. Weighted least squares is similar, but used for data with heteroscedastic errors. You instead minimize the weighted sum of squares, weighted by some known linear combination of parameters. This is related to <strong>Minimum χ<sup>2</sup> regression</strong>.</p>
+<p>Many probability distributions and models only depend on a few parameters. There are many techniques that one can use to obtain estimates of these parameters. The most common are the method of moments, least squares, and maximum likelihood estimation. For a Gaussian, for example, the mean and variance are estimated by the sample mean and sample variance, respectively.</p>
+<p><strong>Method of moments</strong> - Moments describe basic parameters of a distribution (central location, width, asymmetries). The kth sample moment is basically a discrete version of the kth moment. You sum up each sample value to the kth power and divide by the sample size. Any parameter that can be expressed as a simple function of the moments can be estimated in this way.</p>
+<p><strong>Method of least squares</strong> - A significant application of least squares is in regression (Section 7.3). The least-squares estimator of a parameter is obtained by minimizing the sum of the squares of the differences between the data and the population parameter being estimated. Weighted least squares is similar, but used for data with heteroscedastic errors. You instead minimize the weighted sum of squares, weighted by some known linear combination of parameters. This is related to <strong>Minimum χ<sup>2</sup> regression</strong>.</p>
 <p><strong>Maximum likelihood method</strong> - Focuses on methods that give the most probable outcome for an estimator. The likelihood is the pdf viewed as a function of the data given model parameters with specific values. f(_;θ) is the pdf with parameter θ. Therefore, the likelihood and loglikelihood are given by:</p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="q3FCW7wevhKL">
     <picture>
@@ -154,7 +154,7 @@ body {
     </picture>
 </figure>
 <p>where Xi are i.i.d. random variables, and you replace X with x for observed data. loglikelihood is usually computationally easier to calculate. The MLE estimator is usually unbiased, but if it isn't, this can usually be fixed by multiplying the estimator by a constant. For “nice” functions g of the parameter, the MLE of g is the MLE of the estimator. Many common situations have the MLE estimators as asymptotically normal (this is helpful for calculating confidence intervals).</p>
-<p><strong>Coverage probability</strong> - The probability that the true parameter is within the x% confidence interval is at least x%. For 95% confidence interval, if the experiment were repeated 100 times, an average of 95 intervals will contain the true parameter value.</p>
+<p><strong>Coverage probability</strong> - The probability that the true parameter is within the x% confidence interval is at least x%. For a 95% confidence interval, if the experiment were repeated 100 times, an average of 95 intervals would contain the true parameter value.</p>
 <p>MLE confidence intervals depend on the variance and sample size. The 100(1-a)% confidence interval for the mean is:</p>
 <figure class="image image-style-block-align-left" data-ckbox-resource-id="Zd2nHZtsDJ7a">
     <picture>
@@ -162,18 +162,18 @@ body {
     </picture>
 </figure>
 <p>where z and t are defined such that P(Z &gt; z) = P(T<sub>m</sub> &gt; t(m)) = a, where Z is the standard normal and T<sub>m</sub> is a t-distribution with m degrees of freedom.</p>
-<p>Other confidence interval calculations can quickly get even more complicated, but thankfully statistics software is good at calculating them.</p>
+<p>Other confidence interval calculations can quickly get even more complicated, but thankfully, statistics software is good at calculating them.</p>
 <p><strong>Two-sided and One-sided</strong> - Two-sided confidence limits are calculated when the question permits higher and lower values. One-sided is asymmetrical.</p>
 <p>Any numerical optimization method can be used to maximize likelihoods. The simplest analytical model is to simply set the derivative of the likelihood to 0 with respect to each parameter. This gives a system of p equations in p unknowns that can be solved with algebra.</p>
 <p>There have been computational methods with varying degrees of effectiveness, but one of the most influential is the</p>
-<p><strong>EM algorithm</strong> - considers mapping set of datasets to unknown complete set. The algorithm starts with initial values of the model parameters. The algorithm is iterative and has two steps: the <strong>expectation step</strong> calculates the likelihood for the current values of the parameter, and the <strong>maximization step</strong> updates the missing data values, assuring that likelihood with respect to the current model is maximized. This new dataset replaces the original and the algorithm is repeated until convergence. This is useful since each step guarantees an increase of the likelihood from the previous iteration.</p>
+<p><strong>EM algorithm</strong> - considers mapping a set of datasets to an unknown complete set. The algorithm starts with initial values of the model parameters. The algorithm is iterative and has two steps: the <strong>expectation step</strong> calculates the likelihood for the current values of the parameter, and the <strong>maximization step</strong> updates the missing data values, assuring that likelihood with respect to the current model is maximized. This new dataset replaces the original, and the algorithm is repeated until convergence. This is useful since each step guarantees an increase in the likelihood from the previous iteration.</p>
 <h3>3.5 Hypothesis testing techniques</h3>
 <p>Two competing statements are determined for a given experiment. The null and alternative hypotheses. It is impossible to simultaneously minimize false positives and negatives, so the scientist must decide what is more important for the specific question. Most commonly, let false negatives be uncontrolled, and keep false positives down to the 5% confidence level.</p>
 <p><strong>Power</strong> - the probability of correctly rejecting the null hypothesis (i.e. when the alternative hypothesis is true) = 1 - false negative rate. Often want to look for the</p>
 <p><strong>Uniformly most powerful</strong> - describes the test statistic that gives the highest power for all parameters at a chosen significance level.</p>
 <p><strong>Statistically significant</strong> - the result of a test that is unlikely to have occurred by chance. Significant at the x level if you have 100(1-x)% confidence. Quantified also by the</p>
 <p><strong>p-value</strong> - the probability of getting a value as extreme as the test statistic, <i>assuming the null hypothesis is true</i>.</p>
-<p><i>The null hypothesis can never be accepted, it can only (fail to) be rejected at a given confidence level.</i> If many hypothesis tests are conducted on the same dataset (searching every pixel in an image for faint sources), significance levels must change. This is because there then must be a balance between false positives and sensitivity.</p>
+<p><i>The null hypothesis can never be accepted; it can only (fail to) be rejected at a given confidence level.</i> If many hypothesis tests are conducted on the same dataset (searching every pixel in an image for faint sources), significance levels must change. This is because there then must be a balance between false positives and sensitivity.</p>
 <p><strong>False detection rate</strong> - A new procedure for combining multiple hypothesis tests that can control false positives.</p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="yAUIEUG5BgkU">
     <picture>
@@ -187,7 +187,7 @@ body {
     <figcaption>A useful summary of hypotheses and critical regions. They contain inequalities involving values of statistics computed from the data.</figcaption>
 </figure>
 <p><strong>Critical regions (rejection regions)</strong> - If a statistic falls in the critical region, the null hypothesis should be rejected.</p>
-<p>In the above tables X bar is the sample mean of n i.i.d. random variables, and Y bar is the sample mean of m i.i.d. random variables from a population independent of x. y are observations from binomial distribution with population portion p with n trials. If n and m are small, then different critical regions will have different definitions.</p>
+<p>In the above tables, X bar is the sample mean of n i.i.d. random variables, and Y bar is the sample mean of m i.i.d. random variables from a population independent of x. y are observations from a binomial distribution with population portion p with n trials. If n and m are small, then different critical regions will have different definitions.</p>
 <p><strong>The t distribution</strong> - with v degrees of freedom. It is the sampling distribution for random samples from normal populations. <i>If x bar and s<sup>2</sup> are the mean and variance of a random sample of size n from a normal population, then (xbar - mu)/(s/sqrt(n)) has the t distribution with n-1 degrees of freedom.</i></p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="6WhTPZ6b2mDB">
     <picture>
@@ -197,9 +197,9 @@ body {
 <h3>3.6 Resampling methods</h3>
 <p>Finding the distribution of any given statistic is often difficult in general. However, this limitation can be somewhat overcome with</p>
 <p><strong>Resampling methods</strong> - statistical methods that involve building synthetic populations from limited observations that can all be analyzed in the same way to see how statistics depend on random variations in the observations. Resampling methods do well to preserve the true distributions in the underlying real population, including things like truncation and censoring.</p>
-<p><strong>Half-sample method</strong> - randomly choose half the data points, calculate the statistic, repeat. Estimation of the statistic can then be based on a histogram of the resampled statistics. Also called <strong>interpenetrating samples</strong>. One very popular variant of this is the</p>
-<p><strong>Jackknife method</strong> - For a dataset with n points, calculate n datasets ("jackknife samples") with n-1 points, each omitting a different point, the calculate the statistic for each sample. Helps with detecting variation with n (bias), as in general, we want n = infinity. Can fix bias of order 1/n, but not greater.</p>
-<p><strong>Bootstrap</strong> - Resampling with replacement. Create a large number of datasets, each with n points randomly drawn from the original data. This means that the simulated datasets will each miss some points and also and multiple copies of the same data point. In that way, it is a Monte Carlo method to simulate from existing data without any assumption of the underlying population &nbsp;(i.e. it is <strong>nonparametric</strong>). Useful for generating confidence intervals, as well.</p>
+<p><strong>Half-sample method</strong> - randomly choose half the data points, calculate the statistic, and repeat. Estimation of the statistic can then be based on a histogram of the resampled statistics. Also called <strong>interpenetrating samples</strong>. One very popular variant of this is the</p>
+<p><strong>Jackknife method</strong> - For a dataset with n points, calculate n datasets ("jackknife samples") with n-1 points, each omitting a different point, then calculate the statistic for each sample. Helps with detecting variation with n (bias), as in general, we want n = infinity. Can fix bias of order 1/n, but not greater.</p>
+<p><strong>Bootstrap</strong> - Resampling with replacement. Create a large number of datasets, each with n points randomly drawn from the original data. This means that the simulated datasets will each miss some points and also have multiple copies of the same data point. In that way, it is a Monte Carlo method to simulate from existing data without any assumption of the underlying population (i.e., it is <strong>nonparametric</strong>). Useful for generating confidence intervals, as well.</p>
 <h3>3.7 Model selection and goodness-of-fit</h3>
 <p>There are a lot of situations where the “best fit” of a particular model to data is required. The overall procedure for doing so is:</p>
 <ol>
@@ -217,8 +217,8 @@ body {
     </picture>
     <figcaption>Mathematical representation of this process.</figcaption>
 </figure>
-<p>Doing the above gets you the <strong>minimum χ<sup>2</sup>&nbsp;parameters</strong>. Goodness of fit is chosen to be when <strong>χ<sup>2</sup><sub>v</sub></strong>, where v is the number of degrees of freedom.</p>
-<p>There are three main categories of nonparametric hypothesis tests, based on the KS, Cramer-von Mises, and AD statistics, and they are used to compare empirical distributions of univariate data to the hypothesized distribution function of the model. These are described in more detail in Section 5.3. It is important to state, however, that there is a distinction between the KS statistic and the KS test. Also, the pre-tabulated probabilities are only valid for models where all the parameters are estimated independently, which is uncommon in astronomy. This problem can be alleviated with bootstrapping.</p>
+<p>Doing the above gets you the <strong>minimum χ<sup>2</sup>&nbsp;parameters</strong>. Goodness of fit is chosen to be when <strong>χ<sup>2</sup><sub>v</sub></strong> is minimized, where v is the number of degrees of freedom.</p>
+<p>There are three main categories of nonparametric hypothesis tests: those based on the KS, Cramer-von Mises, and AD statistics, and they are used to compare empirical distributions of univariate data to the hypothesized distribution function of the model. These are described in more detail in Section 5.3. It is important to state, however, that there is a distinction between the KS statistic and the KS test. Also, the pre-tabulated probabilities are only valid for models where all the parameters are estimated independently, which is uncommon in astronomy. This problem can be alleviated with bootstrapping.</p>
 <p><strong>Parametric bootstrap</strong> - simulated datasets are obtained from the best-fit model. Using this to get 90 to 99% critical values replaces the standard probability tabulation of the KS test.</p>
 <p>Likelihood-based methods for model selection use hypothesis testing based on maximum likelihood estimators. Below are some examples:</p>
 <p><strong>Wald test</strong> - provides a test for the null hypothesis that the value of the parameter equals theta naught. It represents the standardized distance between theta naught and the MLE theta hat.</p>
@@ -242,7 +242,7 @@ body {
 </figure>
 <p>where X is a random variable and theta is a parameter.</p>
 <p>Sometimes it is better to take an alternative approach with</p>
-<p><strong>Penalized likelihoods</strong> - when using nested models, the largest likelihood in the nested model is always smaller because it has fewer parameters. So, you can apply a penalty to compensate for this difference.</p>
+<p><strong>Penalized likelihoods</strong> - when using nested models, the largest likelihood in the nested model is always the more complicated model because it has more parameters. So, you can apply a penalty to compensate for this difference.</p>
 <p><strong>Akaike information criterion</strong> - defined for model j as</p>
 <figure class="image image-style-block-align-left" data-ckbox-resource-id="5x-pnOf4i3LV">
     <picture>
@@ -257,9 +257,9 @@ body {
     </picture>
 </figure>
 <h3>3.8 Bayesian statistical inference</h3>
-<p><strong>Posterior probability</strong> - the conditional probability of the model given the data. This is the result of the calculation</p>
+<p><strong>Posterior probability</strong> - the conditional probability of the model given the data. This is the result of the calculation.</p>
 <p><strong>Likelihood function</strong> - The conditional probability of the data given the model. The assumed distribution the data are drawn from.</p>
-<p><strong>Prior information</strong> - The marginal probability of the model. There is no information from the data, but this is where prior information of the problem is included.</p>
+<p><strong>Prior information</strong> - The marginal probability of the model. There is no information from the data, but this is where prior information about the problem is included.</p>
 <p>The posterior of a chosen set of models given the observable is equal to the product <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">of the likelihood of the data for those models and the prior probability on the models (normalized).</span></p>
 <p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Bayesian inference</strong> - applying the steps above (Baye's theorem) to assess the degree to which a dataset is consistent with a hypothesis.</span></p>
 <p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Bayesian inference works best when there is </span><i><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">prior </span></i><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">knowledge to get a realistic </span><i><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">prior</span></i><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">. Where MLE gives the maximum of the likelihood, Bayesian first weights this likelihood by the prior. Some useful prior distributions include:</span></p>
@@ -273,29 +273,29 @@ body {
 <p><strong>Normal mixture model</strong> - unknown number of normal components</p>
 <h3>R applications - none here, included in later chapters</h3>
 <h2>Probability Distribution Functions</h2>
-<p>This chapter focuses on a few pdfs that are useful to astronomy. For any information not in the table below, look to Wikipedia, since these are all common distributions.</p>
+<p>This chapter focuses on a few pdfs that are useful to astronomy. For any information not in the table below, look to Wikipedia since these are all common distributions.</p>
 <figure class="image image-style-block-align-left" data-ckbox-resource-id="mDhl7Led-M0L">
     <picture>
         <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/86.webp 86w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/172.webp 172w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/258.webp 258w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/344.webp 344w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/430.webp 430w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/516.webp 516w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/602.webp 602w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/688.webp 688w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/774.webp 774w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/855.webp 855w" type="image/webp" sizes="(max-width: 855px) 100vw, 855px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/mDhl7Led-M0L/images/855.jpeg" width="855" height="402">
     </picture>
 </figure>
 <h3>4.1 Binomial and multinomial</h3>
-<p>Described above in chapter 2, it describes probabilities of outcomes from independent binary trials. The multinomial is just the k-dim generalization (so for k possible outcomes). The MLE, minimum chi square, and MVUE are all p = X/n. p is the probability of success occurring in the population, X is the number of successes.</p>
-<p>Many problems require the estimation of the ratio of binomial random variables (e.g. SNR, hardness ratio in x-ray, etc.). These are harder to deal with when n is small. For small datasets (n&lt;40), it is better to use the Wilson estimator. Below is it for the 95% confidence interval</p>
+<p>As described above in Chapter 2, it describes probabilities of outcomes from independent binary trials. The multinomial is just the k-dim generalization (so for k possible outcomes). The MLE, minimum chi-square, and MVUE are all p = X/n. p is the probability of success occurring in the population, X is the number of successes.</p>
+<p>Many problems require the estimation of the ratio of binomial random variables (e.g. SNR, hardness ratio in x-ray, etc.). These are harder to deal with when n is small. For small datasets (n&lt;40), it is better to use the Wilson estimator. Below is for the 95% confidence interval</p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="vkNiHP5B5UYP">
     <picture>
         <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/705.webp 705w" type="image/webp" sizes="(max-width: 705px) 100vw, 705px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/vkNiHP5B5UYP/images/705.png" width="705" height="210">
     </picture>
 </figure>
 <h3>4.2 Poisson</h3>
-<p>Events follow the Poisson distribution if they are produced by Bernouilli trials where p is very small, but n is large, so np approaches a constant. This occurs naturally in photon counting, radioactive decay, etc. Successive probabilities are given by λ/(x+1).</p>
+<p>Events follow the Poisson distribution if they are produced by Bernouilli trials where p is very small, but n is large, and np approaches a constant. This occurs naturally in photon counting, radioactive decay, etc. Successive probabilities are given by λ/(x+1).</p>
 <p><strong>Nonhomogeneous/nonstationary Poisson process</strong> - when the counting process is mixed with another pdf (e.g. the intensity changes with time)</p>
 <p><strong>Marked Poisson processes</strong> - association of other RVs (e.g. mass) to a Poisson variable (e.g. position in space). The distribution of these variables is also Poisson.</p>
 <p>There are also <strong>truncated and censored Poisson distributions</strong></p>
 <p><strong>Mixed Poisson processes</strong> - the intensity itself is the outcome of a separate RV with some known or assumed structure.</p>
 <h3>4.3 Normal and lognormal</h3>
 <p>The sample mean is simultaneously the least-squares estimator and MLE. A normal RV can be standardized, as explained above. Should still use t distribution for confidence intervals.</p>
-<p>It is often necessary to evaluate whether a particular statistic is consistent with the normal distribution (for asymptotically normal situations). AD, CvM and KS tests are used. The <strong>Shapiro-Wilks test</strong> is also used for this purpose, it uses rank and least-squares measurements.</p>
+<p>It is often necessary to evaluate whether a particular statistic is consistent with the normal distribution (for asymptotically normal situations). AD, CvM and KS tests are used. The <strong>Shapiro-Wilks test</strong> is also used for this purpose. It uses rank and least-squares measurements.</p>
 <p><strong>Multivariate normal distribution</strong> - a random vector where every linear combination of its components has a univariate normal distribution.</p>
 <h3>4.4 Pareto (power-law)</h3>
 <p><strong>Power-law/Pareto</strong> - used very frequently in astronomy. P(X &gt; x) is proportional to (x/x<sub>min</sub>)<sup>-a</sup>, a is the index of the power law.</p>
@@ -324,10 +324,10 @@ body {
 </figure>
 <p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>χ<sup>2</sup><sub>v</sub> distribution</strong> - special case of the gamma distribution where b = 2 and α = ν/2.</span></p>
 <h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">R applications</span></h3>
-<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">The book lists useful packages that contain different distributions. There are also examples on comparing Pareto estimators, fitting distributions to data, tests for normality, and tests for multimodality.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">The book lists useful packages that contain different distributions. There are also examples of comparing Pareto estimators, fitting distributions to data, tests for normality, and tests for multimodality.</span></p>
 <h2><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Nonparametric statistics</span></h2>
 <h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">5.1 The astronomical context</span></h3>
-<p>In astronomy, the underlying phenomena are almost always more complex than the simple models provided in the book, so choosing such a model can obfuscate characteristics of the data. Therefore it is clear why nonparametric statistical tools are needed to avoid making assumptions.</p>
+<p>In astronomy, the underlying phenomena are almost always more complex than the simple models provided in the book, so choosing such a model can obfuscate characteristics of the data. Therefore, it is clear why nonparametric statistical tools are needed to avoid making assumptions.</p>
 <h3>5.2 Concepts of nonparametric inference</h3>
 <p><strong>Nonparametric statistics</strong> - Two categories: 1) procedures that do not involve or depend on parametric assumptions regardless of whether or not the underlying population belongs to a parametric family, and 2) methods that do not require data belong to a particular parametric family.</p>
 <p><strong>Semi-parametric</strong> - combination of parametric modeling with nonparametric principles.</p>
@@ -336,7 +336,7 @@ body {
 <p>Some procedures are parametric but operate on ranks instead of values.</p>
 <h3>5.3 Univariate problems</h3>
 <p><strong>Empirical distribution function</strong> - simplest and most direct (unbiased and consistent) nonparametric estimator of CDF. Made up of steps with heights of 1/n located at the values of Xi.</p>
-<p><strong>KS test</strong> - measures the maximum distance between the edf and the model. Used to test the null hypothesis that the edf equals the cdf of the proposed distribution. A large value allows rejection of the null hypothesis that the two distributions are equal. here is the cumulative distribution for the one-sample KS statistic. Mcrit is the critical value.</p>
+<p><strong>KS test</strong> - measures the maximum distance between the edf and the model. Used to test the null hypothesis that the edf equals the cdf of the proposed distribution. A large value allows for the rejection of the null hypothesis that the two distributions are equal. Here is the cumulative distribution for the one-sample KS statistic. Mcrit is the critical value.</p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="mzFnljznWYEY">
     <picture>
         <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/720.webp 720w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/725.webp 725w" type="image/webp" sizes="(max-width: 725px) 100vw, 725px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/mzFnljznWYEY/images/725.png" width="725" height="377">
@@ -347,9 +347,9 @@ body {
     <li>KS is not distribution-free: pre-tabulated critical values of KS statistic are not valid if the model parameters were estimated from the data set being tested, only if the model parameters are known in advance.</li>
     <li>Also not distribution-free if the dataset has two or more dimensions because a unique ordering of points is necessary to construct an edf.</li>
     <li>KS is sensitive to differences between two edfs or one edf and the cdf having different means.</li>
-    <li>Less efficient efficient near tails of distribution</li>
+    <li>Less efficient near tails of the distribution</li>
 </ol>
-<p><strong>CvM statistic</strong> - measures the sum of the squared differences between the edf and cdf. Captures global and local differences, so often performs better than KS. Similar limitation to KS, again, in that the edf and cdf converge to 0 and 1 at the ends, so differences there are squeezed.</p>
+<p><strong>CvM statistic</strong> - measures the sum of the squared differences between the edf and cdf. It captures global and local differences, so it often performs better than KS. Similar limitation to KS, again, in that the edf and cdf converge to 0 and 1 at the ends, so differences there are squeezed.</p>
 <p>Two-sample tests compare two edfs versus an edf and cdf.</p>
 <p><strong>AD statistic</strong> - provides consistent sensitivity across the full range of x. It is a weighted variant of the CvM statistic. <i>Usually the best choice of these 3.</i></p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;" data-ckbox-resource-id="aWZ2EuWlyGXC">
@@ -396,17 +396,17 @@ body {
     </picture>
 </figure>
 <p>for a generalized r by c contingency table, where O is the observed number and E is the expected. The null distribution is the χ<sup>2</sup> distribution with (r-1)(c-1) degrees of freedom.</p>
-<p><strong>Fisher's Exact Test</strong> - Determines probability of getting the observed results if hypothesis that the two parameters in the 2 by 2 contingency table are unrelated. Turns into a hypergeometric distribution (sampling finite population without replacement)</p>
+<p><strong>Fisher's Exact Test</strong> - Determines the probability of getting the observed results if the hypothesis that the two parameters in the 2 by 2 contingency table are unrelated. Turns into a hypergeometric distribution (sampling finite population without replacement)</p>
 <h3>5.6 Bivariate and multivariate tests</h3>
 <p><strong>Spearman's rank test</strong> - for the independence between two variables. Subtract to find the difference between the rank values for each pair of observations. Square each difference and add them all up. Ties require a correction.</p>
-<p><strong>Kendall tau correlation measure</strong> - usually nearly identical to Spearman, but is sometimes preferable as it approaches normality factor for small samples. The ratio of the difference of concordant and discordant pairs to the sum of concordant and discordant pairs.</p>
+<p><strong>Kendall tau correlation measure</strong> - usually nearly identical to Spearman, but is sometimes preferable as it approaches normality faster for small samples. The ratio of the difference of concordant and discordant pairs to the sum of concordant and discordant pairs.</p>
 <h3>5.7 Remarks</h3>
 <p>Nonparametrics should be used more often because the underlying physics are never perfectly understood.</p>
 <h3>R applications</h3>
-<p>The examples create summary plots and statistics and simple visualizations of a univariate dataset. They show a boxplot and display different test for normality. They create empirical distributions, show the quantile functions as well as Q-Q plots. There are also examples of two-sample tests and an example of contingency tables.</p>
+<p>The examples create summary plots, statistics, and simple visualizations of a univariate dataset. They show a boxplot and display different tests for normality. They create empirical distributions and show the quantile functions as well as Q-Q plots. There are also examples of two-sample tests and an example of contingency tables.</p>
 <h2>Data smoothing</h2>
 <h3>6.1 astronomical context</h3>
-<p><strong>Density estimation</strong> - estimate unknown pdf of RV from a set of observations, or <i>turn individual measurements into a continuous distribution</i>.</p>
+<p><strong>Density estimation</strong> - estimate unknown pdf of RV from a set of observations or <i>turn individual measurements into a continuous distribution</i>.</p>
 <h3>6.2 Concepts of density estimation</h3>
 <p><strong>Nonparametric density estimation</strong> - when there is no assumption of parametric form</p>
 <h3>6.3 Histograms</h3>
@@ -423,15 +423,15 @@ body {
         <source srcset="https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/80.webp 80w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/160.webp 160w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/240.webp 240w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/320.webp 320w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/400.webp 400w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/480.webp 480w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/560.webp 560w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/640.webp 640w,https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/711.webp 711w" type="image/webp" sizes="(max-width: 711px) 100vw, 711px"><img src="https://ckbox.cloud/8b0a10a6a410e7760900/assets/kAfWYvu5fEHS/images/711.png" width="711" height="180">
     </picture>
 </figure>
-<p>is used when the population resembles a normal distribution, where ⅓ is replaced by 1/(2 + p) for multivariate datasets with p dimensions. The MSE has a bias that shrinks with shrinking h, and a variance that decreases for increasing h. Other choices of bin width work to balance the tension between the two.</p>
+<p>is used when the population resembles a normal distribution, where ⅓ is replaced by 1/(2 + p) for multivariate datasets with p dimensions. The MSE has a bias that shrinks with shrinking h and a variance that decreases for increasing h. Other choices of bin width work to balance the tension between the two.</p>
 <p>Histograms have <i>several problems</i>:</p>
 <ol>
-    <li>No guidance for choosing the origin for the histogram. Can be mitigated with <strong>average shifted histograms</strong></li>
+    <li>No guidance for choosing the origin of the histogram. Can be mitigated with <strong>average shifted histograms</strong></li>
     <li>No guidance for choosing the method for grouping data into bins: equal spacing but unequal points, unequal spacing but equal number of points, or something else.</li>
     <li>If being used for further analysis, a central bin location must be specified, but this causes a bias.</li>
-    <li>The choice of optimal bin width requires knowing the true distribution, finding which is the point of the histogram in the first place</li>
+    <li>The choice of optimal bin width requires knowing the true distribution, but finding that is the point of the histogram in the first place</li>
     <li>Multivariate histograms are difficult to visualize or interpret</li>
-    <li>Discontinuities between bins don't accurately reflect continuous behavior</li>
+    <li>Discontinuities between bins don't accurately reflect continuous behavior.</li>
 </ol>
 <p>Even though there are all these drawbacks, <i>histograms are appropriate when the original data is binned</i></p>
 <h3>6.4 Kernel density estimators</h3>
