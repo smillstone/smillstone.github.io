@@ -11,7 +11,7 @@ body {
 <h1>A508 Class Summary</h1>
 <h2>Sam Millstone</h2>
 <h3>Purpose of this web page:</h3>
-<p>This page summarizes relevant concepts and statistical techniques learned in A508 from the book Modern Statistical Methods for Astronomy. The focus is more on restating the ideas behind different techniques in a way that makes sense to me, as well as how and on what type of data one might use each technique, than just regurgitating information from the book.</p>
+<p>This page summarizes relevant concepts and statistical techniques learned in A508 from the book Modern Statistical Methods for Astronomy. The focus is more on restating the ideas behind different techniques in a way that makes sense to me (specifically those that were mentioned more than just in passing), than just regurgitating information from the book.</p>
 <h3>Table of Contents:</h3>
 <ol>
     <li>Introduction</li>
@@ -868,6 +868,161 @@ body {
 <p><strong>Partial autocorrelation function</strong> - Gives autocorrelation while removing the effects of correlations at shorter lags. The value of PACF(p) is found by successively fitting autoregressive models with order 1,2,…,p and setting the last coefficient of each model to the PACF parameter. For example, AR(2) has&nbsp;</p>
 <figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:694/137;" src="https://i.postimg.cc/tCywb4pr/image.png" width="694" height="137"></figure>
 <p><strong>Lag k scatter plot</strong> - plot all x(t) against x(t+k). Random scatter implies uncorrelated noise and linear relationship points toward stochastic AR behavior. Circular distribution suggests a periodic signal, and clusters of points suggest nonstationary time series with classes of variable behavior.</p>
-<p><strong>Durbin-Watson statistic</strong>⁠⁠⁠⁠⁠⁠⁠ - a simple measure of autocorrelation in evenly spaced time series.</p>
+<p><strong>Durbin-Watson statistic</strong> - a simple measure of autocorrelation in evenly spaced time series. Value of 2 means no AC, higher is positive, lower is negative.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:674/182;" src="https://i.postimg.cc/G3STwHFR/image.png" width="674" height="182"></figure>
+<p><strong>Random walk</strong> - the simplest stochastic autocorrelated model, where each step is the previous plus a guassian white noise term. Starts with an ACF of 1 that decreases with increasing k.</p>
+<p><strong>Autoregressive model</strong> - Generalization of the random walk that permits dependencies on more than just the previous step (with different weights). Has ACF(k) = the first constant to the kth power.</p>
+<p><strong>Moving average model</strong> - current value depends on past values of the <i>noise</i> rather than the variable itself.</p>
+<p><strong>ARMA(p,q) model</strong> - A combination of AR and MA models.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:673/41;" src="https://i.postimg.cc/HkSk5N6g/image.png" width="673" height="41"></figure>
+<p><strong>Autoregressive integrated moving average model</strong> - combines ARMA and random walk, since ARMA is stationary.</p>
+<p><strong>Volatility</strong> - another word for heteroscedasticity.</p>
+<p><strong>(Generalized) Autoregressive conditional heteroscedastic model</strong> - variance is assumed to be a stochastic autoregressive process depending on previous values.</p>
+<h3>11.4 Time-domain analysis of unevenly spaced data</h3>
+<p>Occurs frequently in astronomy.</p>
+<p><strong>Unbinned discrete correlation function</strong> - computes autocorrelation function in a way that avoids interpolating unevenly spaced data on a regular grid.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:605/197;" src="https://i.postimg.cc/D0FTRQx6/image.png" width="605" height="197"></figure>
+<p>where x and z are datasets and t is the time.</p>
+<p><strong>Discrete correlation function</strong> - average of the UDCF</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:696/218;" src="https://i.postimg.cc/L4BRL7sb/image.png" width="696" height="218"></figure>
+<p><strong>Structure function</strong> - measure of autocorrelation. average over the time series of the difference between x<span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">(t) and x(t+tau) </span>to the qth power.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:695/93;" src="https://i.postimg.cc/R0HxFp8G/image.png" width="695" height="93"></figure>
+<p>when q = 2, this is known as the <strong>variogram</strong> - alternative to ACF (more on this next chapter)</p>
+<h3>11.5 Spectral analysis of evenly spaced data</h3>
+<p>In Fourier analysis, a time series that is dominated by sinusoidal patterns can readily be modeled as</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:632/156;" src="https://i.postimg.cc/Y0Xs8QZh/image.png" width="632" height="156"></figure>
+<p><strong>Power spectrum</strong> - the fourier transform of the autocovariance function</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:662/257;" src="https://i.postimg.cc/Zqrs2GXk/image.png" width="662" height="257"></figure>
+<p><strong>Spectral analysis</strong> - power spectrum usually must be estimated from the time series measurements of evenly spaced data. Usually with the finite fourier series</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:714/86;" src="https://i.postimg.cc/kX0cCjQ7/image.png" width="714" height="86"></figure>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:581/422;" src="https://i.postimg.cc/NjRxj1Dm/image.png" width="581" height="422"></figure>
+<p><strong>Periodogram</strong> - a histogram of the quantity I(omega) against omega</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:695/140;" src="https://i.postimg.cc/SKr7WkwK/image.png" width="695" height="140"></figure>
+<p>The periodogram has limitations: high noise, biased, unreasonable assumptions (infinitely long and evenly spaced data with stationary sinusoidal signals)</p>
+<p><strong>Spectral leakage</strong> - power going into nearby frequencies when the time series is short compared to the period.</p>
+<p>Can smooth to reduce variance in either the frequency or time domains.</p>
+<h3>11.6 Spectral analysis of unevenly spaced data</h3>
+<p>Occurs more in astronomy than many other fields.</p>
+<p><strong>Lomb-Scargle periodogram</strong> - generalization of the periodogram for unevenly spaced data. Can be either a modified Fourier analysis or a least-squares regression to sine waves</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:711/85;" src="https://i.postimg.cc/hvVyKHnJ/image.png" width="711" height="85"></figure>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:334/76;" src="https://i.postimg.cc/GmL71752/image.png" width="334" height="76"></figure>
+<p><strong>Minimum string length</strong> - The sum of the length of lines connecting values of the time series as the phase runs from 0 to 2pi. For an incorrect period, the signal is scattered in phase and the string length is large.</p>
+<p><strong>Analysis of variance (ANOVA) statistic</strong> - ratio of the sum of inter-bin variances to the sum of intra-bin variances</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:682/136;" src="https://i.postimg.cc/YSbwHLRc/image.png" width="682" height="136"></figure>
+<p>Significance levels are in general difficult to determine for periodigrams of unevenly spaced data, but for the LSP, the probability that some spectral peak is higher than z0 is:</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:641/78;" src="https://i.postimg.cc/m2YLnDv4/image.png" width="641" height="78"></figure>
+<p>where Np is the number of independent periods. Widely used, but it has its problems. Assumes that there is a single periodic signal in white noise and that the variance is known in advance.</p>
+<p><strong>Nonstationary Poisson processes</strong> - Poisson process with underlying periodic variability. There are some periodograms that can be used in this case.</p>
+<h3>11.7 State-space modeling and the Kalman filter</h3>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:683/194;" src="https://i.postimg.cc/TwdgKFnL/image.png" width="683" height="194"></figure>
+<p>X is a vector of observed values for a collection of variables. <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">S is the <strong>state vector</strong> that depends on the parameters theta, h is the matrix that maps the true state space into the observed space. G is the <strong>transition matrix</strong> that defines how the system changes in time. Epsilon and η terms terms are normal errors.</span></p>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">11.8 Nonstationary time series</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">There are many ways to analyze nonstationary time series:</span></p>
+<p><strong>Regression for deterministic behavior</strong> - best-fit parameters can be estimated by least-squares, MLE, or Bayesian using standard regression or state space approaches.</p>
+<p><strong>Bayesian blocks and bump hunting</strong> - semi-parametric regression to characterize signals and detect change-points. Data is a sequence of events. Construct a likelihood assuming a sequence of constant flux levels with jumps at a number of change-points.</p>
+<p><strong>Change-point analysis</strong> - If likelihood methods establish the model of the initial state, the likelihood ratio test can find changes in the mean, variance, trend, autocorrelation, and other model characteristics. Nonparametric tests are often used to find structural changes.</p>
+<p><strong>Wavelet analysis</strong> - Wavelets transform time data to frequency space like fourier, but it is well-suited to nonstationary processes, especially if variations occur on a range of temporal scales. The transform is given by</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:739/149;" src="https://i.postimg.cc/RFPky3mP/image.png" width="739" height="149"></figure>
+<p>where Xt is the function being transformed, s is the scale, u is the time, and g is a simple basis function that falls rapidly to 0, like a gaussian. This process maximizes the temporal resolution at all frequencies by changing the area of each bin in frequency space (higher frequencies get better time resolution and worse frequency resolution and vice versa).</p>
+<p><strong>Singular spectrum analysis</strong> - PCA for temporal data, used for smoothing complex time series.</p>
+<h3>11.9 1/f noise or long-memory processes</h3>
+<p><strong>1/f/flicker/red noise or long-memory process</strong> - when variance increases with the characteristic time-scale and the power spectrum can be fit by a power-law at low frequencies. It is called 1/f because there is an inverse correlation of power and frequency in the Fourier power spectrum.</p>
+<p><strong>Short-memory</strong> - processes that can be understood with low-order ARMA models.</p>
+<p>Long-memory processes can arise from a combination of many short-memory processes like the sound of a babbling brook. or from starspots, etc. Often modeled as an autocorrelation function that decays as a power law at large time lags.</p>
+<h3>11.10 Multivariate time series</h3>
+<p>Multiple variables might depend on each other in time.</p>
+<p><strong>Cross-correlation function</strong> - the second-order moments for a bivariate stochastic process are the two individual ACFs and the CCF:</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:672/127;" src="https://i.postimg.cc/C1qqR8Kt/image.png" width="672" height="127"></figure>
+<p>If the CCF shows a single strong peak at some lag k, this may reflect similar structure in the two time series with <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">a delay. CCF can be generalized to multivariate using correlation matrix.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">This approach is really uncommon in astronomy, so it is not discussed further.</span></p>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">R applications</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Here there are examples of histograms, raw and smoothed time series, raw and smoothed periodograms, autocorrelation functions, autoregressive modeling,</span><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"></span> depictions of long-range memory, and wavelet analysis.</p>
+<h2>Spatial point processes</h2>
+<h3>12.1 The astronomical context</h3>
+<p>Spatial data is used all the time in photometry, though the third dimension is usually much less well defined. In addition, spatial point processes are applicable to much astronomical data in low dimensions.</p>
+<h3>12.2 Concepts of spatial point processes</h3>
+<p><strong>Point processes</strong> - sets of irregular patterns in (usually) 2 or 3D space. <strong>Stationary </strong>if invariant under spatial translation. <strong>Isotropic </strong>if invariant under rotation</p>
+<p><strong>Intensity</strong> - λ, and</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:354/91;" src="https://i.postimg.cc/MHGXyjZq/image.png" width="354" height="91"></figure>
+<p>is the expected number of points in a unit of volume v. Follows a Poisson distribution for Poisson processes</p>
+<p><strong>Complete spatial randomness</strong> - a stationary Poisson point process where λ is constant across the space. Sprinkling sand grains on a table or background radiation in a detector.</p>
+<p><strong>Inhomogeneous</strong> - when λ varies with location.</p>
+<p><strong>Marked point processes</strong> - PP when there are associated nonspatial variables.</p>
+<h3>12.3 Tests of uniformity</h3>
+<p>Spatial point process analysis usually begins w<span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">ith testing the hypothesis that the distribution is consistent with CSR. One thing that is often compared with CSR is the edf of the</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Nearest-neighbor distribution</strong> -&nbsp;</span></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:569/80;" src="https://i.postimg.cc/0QjbSwyx/image.png" width="569" height="80"></figure>
+<p>where A is the 2D area containing n points. Simulations are needed to account for edge effects and for small-n samples.</p>
+<p>Some CSR tests are based on sums of nearest-neighbor distances</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:426/203;" src="https://i.postimg.cc/0jdjRdtY/image.png" width="426" height="203"></figure>
+<p>where lambda is average surface density of points and W is the Euclidean distance between i-th point and its nearest neighbor.</p>
+<p>A modified Pollard's P performs well using the five nearest neighbors</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:644/124;" src="https://i.postimg.cc/Pr5T5jNs/image.png" width="644" height="124"></figure>
+<p>&nbsp;where j = 1 to 5 and Yij are distances between i randomly placed locations and the jth nearest neighbor.</p>
+<p>Bias from edge effects is a big issue.</p>
+<h3>12.4 Spatial autocorrelation</h3>
+<p>The unbiased MLE for the intensity of a stationary Poisson point process is the intuitive value: the number of points in a unit p-dim volume.</p>
+<p><strong>Moran's I and Geary's contiguity ratio c</strong> - Indices of spatial autocorrelation that are extensions of Pearson's coefficients of bivariate correlation. They detect departures from spatial randomness. Usually inverse distance weighted. For data grouped into m identical spatial bins</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:718/220;" src="https://i.postimg.cc/sgBB1S1r/image.png" width="718" height="220"></figure>
+<p>where mj is the count of objects in the jth bin. w is the matrix of the kernel function and W is the sum of w elements.</p>
+<p><strong>Correlograms</strong> - plots of I against d.</p>
+<p>E[I] = -1/(n-1), E(c) = 1 for normal noise without clusters or autocorrelation. With strong autocorrelation, both approach 0</p>
+<p><strong>Variogram/semi-variogram</strong> - used to map the variance on different scales across the survey area. half the average squared difference between pairs of values is plotted against the separation distance.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:633/146;" src="https://i.postimg.cc/Jnym5cVr/image.png" width="633" height="146"></figure>
+<p>where m(d) is represents all of the pairs of points which are a distance d away from each other.</p>
+<p>The variogram describes the se<span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">cond-moment properties of a spatial process S</span></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:652/146;" src="https://i.postimg.cc/SRydpVSq/image.png" width="652" height="146"></figure>
+<p>For a stationary, isotropic, Gaussian spatial process, the variogram simplifies to</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:585/190;" src="https://i.postimg.cc/Jhp4qzsq/image.png" width="585" height="190"></figure>
+<p>where rho is the <strong>spatial covariance function</strong>, d is the distance between data points at xi and xj.</p>
+<p><strong>Nugget effect</strong> - the σ<sup>2</sup> offset at zero distance in a variogram. It is because of variations smaller than the minimum separation <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">of measured points.</span></p>
+<p><strong>Sill</strong> - the rise to a constant value.</p>
+<p><strong>Range</strong> - the distance to the sill.</p>
+<p>Variograms are usually modeled by simple functions (circular, parabolic, exponential, gaussian, power-law models exist)</p>
+<p>There are <strong>local indicators of spatial association</strong> such as <strong>local Moran's I</strong> - averages the spatial variance among the k-nearest neighbors of the ith point.&nbsp;</p>
+<h3>12.5 Spatial interpolation</h3>
+<p>If a SPP is a representation of an underlying continuous distribution, the interpolation is an effective way of estimating the distribution. Could either interpolate just density of points, but usually you interpolate some mark variable.</p>
+<p>Because many things are influenced by the objects closest to them, it makes sense to use</p>
+<p><strong>Inverse distance weighted interpolation</strong> - exactly what it sounds like, the weighting scales inversely as a power law of the distance. The value z is calculated as</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:657/222;" src="https://i.postimg.cc/yYz4D3jZ/image.png" width="657" height="222"></figure>
+<p>where d is the vectorial distance from the ith measurement to x0. α is chosen between 0 and 3, with smaller values giving smoother interpolations.</p>
+<p>The most common method for interpolation of marked spatial data is</p>
+<p><strong>Kriging</strong> - a suite of related linear least-squares, minimum variance methods for density estimation in 2 or 3 spatial dimensions that localize inhomogeneous features instead of globally characterizing homogeneous d<span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">istributions.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Ordinary kriging</strong> - want weightings at each point in the dataset to give the unbiased estimator of the continuous response variable z from measurements zi as</span></p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:496/210;" src="https://i.postimg.cc/9M6MRXgQ/image.png" width="496" height="210"></figure>
+<p>There are many types of kriging available: <strong>Simple kriging</strong> if the mean is already known, <strong>block kriging</strong> when the dataset is large and adjacent points can be merged, <strong>cokriging</strong> if two correlated variables are measured at each location, <strong>universal kriging</strong> first removes trends in the data, (<strong>external drift</strong> when a secondary variable can map those trends), <strong>nonlinear kriging</strong> when the trends are not linear in the variables<strong>, multitype kriging</strong> with categorical covariates, <strong>multivariate kriging</strong> with multiple interacting marked variables.</p>
+<h3>12.6 Global functions of clustering</h3>
+<p>There are two very important global measures of clustering</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:633/298;" src="https://i.postimg.cc/TwJdwjbC/image.png" width="633" height="298"></figure>
+<p>where these two functions are the cumulative distributions of the nearest-neighbor distances either from the data points (G) or from random locations (F)</p>
+<p><strong>Empty space function</strong> - F, above, because it is centered around empty locations.</p>
+<p>F works better for weak clustering and G works better for strong clustering.</p>
+<p><strong>Ripley's K function</strong> - most widely used global measure of clustering. It is the average number of points within distance d of observed pointsdivided by the intensity.</p>
+<p><strong>Lieshout-Baddeley J function</strong> - (1-G)/(1-F), compares inter-event distances to distances from a fixed point.</p>
+<p><strong>Two-point correlation function</strong> - counts the number of objects in annuli (instead of circles) around each point. Measures the covariance of the nonuniform structure of the point distribution.</p>
+<h3>12.7 Model-based spatial analysis</h3>
+<p>The parametric models for spatial analysis are similar to those for regression and time series. The hypothesis of CSR can be written as <strong>X = μ + epsilon</strong>, where epsilon is Poisson noise.This has no autocorrelation, clustering, or trend.</p>
+<p><strong>Geographically weighted regression</strong> - maps of several variables are available and you want to explain one map in terms of the others with a linear regression that takes spatial autocorrelation into account.</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:695/104;" src="https://i.postimg.cc/J4Q0TLdG/image.png" width="695" height="104"></figure>
+<p>The response variable Y at location x depends on both the value of the <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">covariates X and on neighboring values of Y, where epsilon is normal noise. The least-squares solution is found by minimizing</span></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:614/110;" src="https://i.postimg.cc/6pyKdxss/image.png" width="614" height="110"></figure>
+<p><strong>Spatial autoregressive model</strong> - assumes the regression coefficients are global, but the response variable is dependent on neighboring values. Can be written in a hierarchical fashion</p>
+<figure class="image image-style-block-align-left"><img style="aspect-ratio:513/143;" src="https://i.postimg.cc/nLJdnqGd/image.png" width="513" height="143"></figure>
+<p>where mu is the mean, delta are the <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">spatially correlated residuals, beta between -1 and 1 gives the strength of the spatial autocorrelation, epsilon is white noise, W is a normalized weight matrix that depends on the distance d from the data point x.</span></p>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">12.8 Graphical networks and tessellations</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">The p-dim distribution of neighbors provides more detailed information about local autocorrelation and clustering for point processes. Visualizations of these connections between nearby points are important to <strong>graph theory</strong>.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Delaunay triangulation</strong> - join all neighboring triplets of points with triangles.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;"><strong>Voronoi/Dirichlet/Thiessen tessellations</strong> - based on line bisectors perpendicular to the Delaunay line segments. Splits the space into polygons around the datapoint. Within a polygon, all points are closer to the associated data point (or set of data points, for higher orders) than any other (set of) point(s).</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Pruning MSTs give a procedure to define a hierarchy of spatial clusters. discussed in chapter 9.</span></p>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">12.9 Points on a circle or sphere</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Useful in astronomy, since 2D sky positions are on a sphere.</span></p>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">Moments are not generally useful because of angles. Angular values must be summed vectorially. The average direction of a sample of angles is the solution of</span></p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:684/392;" src="https://i.postimg.cc/W4z7dLd4/image.png" width="684" height="392"></figure>
+<p>R/n is the <strong>mean resultant length</strong>, and it approaches 1 when the data are clustered towards one direction, and 0 when they are balanced.</p>
+<p><strong>Sample circular variance</strong> - 1 - Rbar.</p>
+<p><strong>Circular dispersion</strong> - a more useful measure of angular spread</p>
+<figure class="image image_resized image-style-block-align-left" style="width:50%;"><img style="aspect-ratio:562/142;" src="https://i.postimg.cc/CL65w3p7/image.png" width="562" height="142"></figure>
+<h3><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">R applications</span></h3>
+<p><span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">In this section there are 3D plots, characterization of autocorrelation with Moran's I and Geary's c, variogram analysis, characterization of clustering with K function, the two-point correlation function, examples of tessellations and applications to smoothing, spatial interpolation with IDW and ordinary kriging, discussion of spatial regression and modeling, and some examples of circular and spherical statistics.</span></p>
 </body>
 </html>
